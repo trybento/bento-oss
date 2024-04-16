@@ -1,0 +1,342 @@
+@import 'bento-common/css/animation.css';
+@import 'bento-common/css/effects.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:host {
+  font-family: inherit;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+/*confetti styles*/
+.bento-confetti-paper {
+  width: 10px;
+  height: 10px;
+  position: fixed;
+  top: -15px;
+  box-shadow: 0px 0px 2px #444;
+  -webkit-animation: floating 2s ease-in, rotating 0.5s ease-in-out infinite;
+}
+
+.bento-confetti-paper1 {
+  background: #e83415;
+}
+.bento-confetti-paper2 {
+  background: GreenYellow;
+}
+.bento-confetti-paper3 {
+  background: #01dcf5;
+}
+.bento-confetti-paper4 {
+  background: yellow;
+}
+.bento-confetti-paper5 {
+  background: orange;
+}
+.bento-confetti-paper6 {
+  background: #11d;
+}
+.bento-confetti-paper7 {
+  background: Fuchsia;
+}
+
+.bento-sidebar-shadow {
+  box-shadow: -1px 4px 4px rgba(23, 25, 35, 0.16),
+    -2px 0px 8px rgba(23, 25, 35, 0.08), 0px 0px 24px rgba(23, 25, 35, 0.08);
+}
+
+.bento-cyoa-option {
+  box-shadow: var(--cyoa-option-shadow);
+  border: 1px solid var(--cyoa-option-border-color);
+}
+
+.bento-cyoa-option:hover {
+  box-shadow: var(--cyoa-option-shadow-hover);
+}
+
+.draggable-element {
+  cursor: move;
+}
+
+.bento-dragging,
+.bento-dragging .draggable-element {
+  cursor: grabbing;
+}
+
+.tooltip {
+  transition: visibility 200ms;
+  animation-fill-mode: forwards;
+}
+
+.tooltip-fade-in {
+  visibility: visible;
+  animation: 300ms cubic-bezier(0.04, 0.62, 0.23, 0.98) 10ms 1 fadeIn;
+}
+
+.tooltip-fade-out {
+  visibility: hidden;
+  animation: 300ms cubic-bezier(0.04, 0.62, 0.23, 0.98) 10ms 1 fadeOut;
+}
+
+/**
+ * This should be used for every tooltip applied on the
+ * embeddable (toggle, sidebar, inline, etc), excluding the visual tags,
+ * that are now handled by the `tooltip` class.
+ */
+.toggle-tooltip {
+  z-index: 2147482999 !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  max-width: 210px;
+}
+
+/*
+* This fully hides the tooltip arrow
+* since it isn't being used anywhere.
+*/
+.toggle-tooltip::before,
+.toggle-tooltip::after {
+  display: none !important;
+}
+
+/*keyframes*/
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes semiPartialFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes partialFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes floating {
+  from {
+    top: 0px;
+  }
+  to {
+    top: 1000px;
+  }
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg) rotateX(0deg);
+  }
+  50% {
+    transform: rotateZ(45deg) rotateX(180deg);
+  }
+  100% {
+    transform: rotateZ(0deg) rotateX(360deg);
+  }
+}
+
+.no-outline-input,
+.no-outline-select {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.no-outline-input:focus,
+.no-outline-select:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* Elements using this class should be 'relative' positioned. */
+.fade-before-20:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: -webkit-gradient(
+    to left,
+    var(--app-background-color),
+    var(--app-background-color-transparent)
+  );
+  background: linear-gradient(
+    to left,
+    var(--app-background-color),
+    var(--app-background-color-transparent)
+  );
+}
+
+.fade-before-20-primary:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: -webkit-gradient(
+    to left,
+    var(--primary-color),
+    var(--primary-color-transparent)
+  );
+  background: linear-gradient(
+    to left,
+    var(--primary-color),
+    var(--primary-color-transparent)
+  );
+}
+
+.fade-before-20-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: -webkit-gradient(
+    to left,
+    var(--card-background-color),
+    var(--card-background-color-transparent)
+  );
+  background: linear-gradient(
+    to left,
+    var(--card-background-color),
+    var(--card-background-color-transparent)
+  );
+}
+
+.slanted:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 4px;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  -webkit-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skew(-15deg);
+  -ms-transform: skew(-15deg);
+  transform: skew(-15deg);
+  border-right: 1px solid white;
+}
+
+/*CIRCULAR PROGRESS BAR STYLES*/
+
+/*
+ * react-circular-progressbar styles
+ * All of the styles in this file are configurable!
+ */
+
+.CircularProgressbar {
+  /*
+   * This fixes an issue where the CircularProgressbar svg has
+   * 0 width inside a "display: flex" container, and thus not visible.
+   */
+  width: 100%;
+  /*
+   * This fixes a centering issue with CircularProgressbarWithChildren:
+   * https://github.com/kevinsqi/react-circular-progressbar/issues/94
+   */
+  vertical-align: middle;
+}
+
+.code-list-item {
+  counter-reset: item;
+}
+.code-list-item li:before {
+  content: counter(item) ' ';
+  counter-increment: item;
+  color: #d4dbe8;
+  text-align: right;
+  width: 24px;
+  margin-right: 12px;
+  display: inline-block;
+}
+
+.dark-focus {
+  position: relative;
+}
+
+.dark-focus:after {
+  user-select: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-color: white;
+  z-index: 1;
+}
+
+.dark-hover {
+  position: relative;
+}
+
+.dark-hover:hover:after {
+  user-select: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  background-color: white;
+  z-index: 1;
+}
+
+.bento-modal-content {
+  max-height: calc(90vh - 84px);
+}
+.bento-modal-content > div > :first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+.bento-banner-step a {
+  text-decoration: underline;
+}
+
+/* Broken video thumbnails */
+.video-thumbnail:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: lightgray;
+}
+
+.resource-center-icon-w {
+  width: 24px;
+}

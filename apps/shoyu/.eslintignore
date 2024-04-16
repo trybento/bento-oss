@@ -1,0 +1,7 @@
+build-staging/
+build/
+*.config.*
+scripts/
+plugins/
+__mocks__/
+*.json

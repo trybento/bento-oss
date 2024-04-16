@@ -1,0 +1,8 @@
+mutation RecordTagDismissedMutation($input: RecordTagDismissedInput!) {
+  recordTagDismissed(input: $input) {
+    tag {
+      __typename
+      id
+    }
+  }
+}

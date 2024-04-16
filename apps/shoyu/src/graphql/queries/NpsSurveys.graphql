@@ -1,0 +1,22 @@
+query NpsSurveysQuery {
+  npsSurveys {
+    ...NpsSurveysQuery_npsSurvey
+  }
+}
+
+fragment NpsSurveysQuery_npsSurvey on EmbedNpsSurvey {
+  entityId
+  formFactor
+  formFactorStyle
+  question
+  fupType
+  fupSettings
+  orderIndex
+  pageTargeting {
+    type
+    url
+  }
+  firstSeenAt
+  answeredAt
+  dismissedAt
+}

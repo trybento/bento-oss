@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+BUILD_DIR=$SCRIPT_DIR/../build
+
+MANIFEST_VERSION=$(node -p -e "require('$BUILD_DIR/chrome-mv3-prod/manifest.json').version")
+
+# Build with source maps
+yarn plasmo build --source-maps
+
+# Package the finalized bundle into a .zip
+yarn zip:prod

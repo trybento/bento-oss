@@ -1,0 +1,9 @@
+mutation AnswerNpsSurveyMutation($input: AnswerNpsSurveyInput!) {
+  answerNpsSurvey(input: $input) {
+    errors
+    npsSurvey {
+      entityId
+      answeredAt
+    }
+  }
+}

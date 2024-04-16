@@ -1,0 +1,1250 @@
+version: 4
+data:
+  attachedData:
+    trivet:
+      testSuites:
+        - description: ""
+          id: qfdPSoMW534BJG8bmd5OQ
+          name: Targeting generation
+          testCases:
+            - expectedOutput:
+                output:
+                  account:
+                    groups:
+                      - rules:
+                          - attribute: industry
+                            ruleType: eq
+                            value: technology
+                            valueType: text
+                    type: attribute_rules
+                  accountUser:
+                    groups: []
+                    type: all
+              id: Aws30ZMNO1E0qZWe7l83q
+              input:
+                input: User industry is technology
+            - expectedOutput:
+                output:
+                  account:
+                    groups:
+                      - rules:
+                          - attribute: featureFlags
+                            ruleType: any
+                            value:
+                              - custom css
+                              - command center
+                            valueType: stringArray
+                    type: attribute_rules
+                  accountUser:
+                    groups:
+                      - rules:
+                          - attribute: fullName
+                            ruleType: eq
+                            value: emily
+                            valueType: text
+                    type: attribute_rules
+              id: SzJXWKj5wP97HE2nfvIx4
+              input:
+                input: Users that has fullName that is emily, and accounts with feature flags
+                  'custom css' or 'command center'
+            - expectedOutput:
+                output:
+                  account:
+                    groups:
+                      - rules:
+                          - attribute: featureFlags
+                            ruleType: all
+                            value:
+                              - custom css
+                              - command center
+                            valueType: stringArray
+                    type: attribute_rules
+                  accountUser:
+                    groups: []
+                    type: all
+              id: XbTLKnjn9UGZv2FVzG6Bj
+              input:
+                input: Accounts with feature flags 'custom css' and 'command center'
+            - expectedOutput:
+                output:
+                  account:
+                    groups: []
+                    type: all
+                  accountUser:
+                    groups:
+                      - rules:
+                          - attribute: createdAt
+                            ruleType: eq
+                            value: 2024-02-26
+                            valueType: date
+                    type: attribute_rules
+              id: 46XkXydXmRr9kqUaxKLtE
+              input:
+                input: Users created on Feb 26 2024
+            - expectedOutput:
+                output:
+                  account:
+                    groups: []
+                    type: all
+                  accountUser:
+                    groups:
+                      - rules:
+                          - attribute: createdAt
+                            ruleType: gt
+                            value: TODAY - 0
+                            valueType: date
+                    type: attribute_rules
+              id: WP4SiwxwjUIYVwKgklFEY
+              input:
+                input: Users created after today
+          testGraph: e0un-xr6DoiUgZ4NxSo3z
+          validationGraph: SBsxobmPkQh3a07Lw94vw
+      version: 1
+  graphs:
+    -qCCLC_LkOZs3SwDgS3D0:
+      metadata:
+        description: Generate flows from an actions list
+        id: -qCCLC_LkOZs3SwDgS3D0
+        name: Flow generation
+      nodes:
+        '[98pSrjFtne2tD5ZhM8mMI]:context "Context: content input"':
+          data:
+            dataType: string
+            id: contentInput
+            useDefaultValueInput: true
+          description: The main input content that GPT should be looking at
+          outgoingConnections:
+            - 'data->"Text: Main prompt" g_pek4OYXvAef9ZPN-v6t/contentInput'
+          visualData: 202.22930670602705/144.0980973274141/300/21//
+        '[OVOn-6V5Z5TP0oXX6OaLL]:graphOutput "Graph Output"':
+          data:
+            dataType: object
+            id: output
+          visualData: 1798.8519677345823/440.25601500929037/300/64//
+        '[O_kQYullyGEwGT5eMwdnF]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - output->"Graph Output" OVOn-6V5Z5TP0oXX6OaLL/value
+          visualData: 1405.0954014990725/431.05216572952224/280/63//
+        '[Oy4YCTS6S5hpSLSvzTbwR]:context "Context: example guide"':
+          data:
+            dataType: string
+            id: exampleGuide
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Text: Main prompt" g_pek4OYXvAef9ZPN-v6t/exampleGuide'
+          visualData: 207.52124211839111/512.2001335288538/300/23//
+        '[QE95TyiKWHdnBx7er9QR1]:context "Context: Input type label"':
+          data:
+            dataType: number
+            defaultValue: ""
+            id: actionsCount
+            useDefaultValueInput: true
+          description: Article, transcript, etc. Tells GPT what it is looking at.
+          outgoingConnections:
+            - 'data->"Text: Main prompt" g_pek4OYXvAef9ZPN-v6t/actionsCount'
+          visualData: 199.7029369631174/-64.81184205715485/300/50//
+        '[RZHOillxwBHQB9eVGo4t2]:text "Text: Example Guide"':
+          data:
+            text: >-
+              {
+                "guideTitle": "Getting started with Chat GPT",
+                "steps": [
+                  {
+                    "title": "Generate a prompt",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Prompts are the main way of getting information from all of the GPT models. You should be clear with the expected outcome of a prompt."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Generate your first prompt",
+                    "ctaUrl": "https://chat.openai.com/"
+                  },
+                  {
+                    "title": "Workflow designer",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Let's build one of the most common contract types: NDAs. To start, click \"Workflow designer\". Let's start with using your own document."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Done"
+                  },
+                  {
+                    "title": "Publish workflow",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "You can publish your workflow after resolving any errors!"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Simply click into each of the errors to be taken directly to the part of the workflow that needs to be ammended."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Done"
+                  }
+                ]
+              }
+          outgoingConnections:
+            - 'output->"Context: example guide" Oy4YCTS6S5hpSLSvzTbwR/default'
+          visualData: -191.03610664618225/393.94162667936223/300/42//
+        '[TD0uClVRNTu0MHY0Ss9ie]:number "Default actions count"':
+          data:
+            round: false
+            roundTo: 0
+            text: ""
+            value: 9
+          description: Only for prompt testing purposes
+          outgoingConnections:
+            - value->"Graph Input" eHM2e55V97d2FrSMy62Tn/default
+          visualData: -576.2856651105109/-133.67186752007495/200/61//
+        '[XmP8k04QleLsc_CKtenCV]:chat "Chat"':
+          data:
+            cache: true
+            enableFunctionUse: false
+            frequencyPenalty: 0
+            maxTokens: 4096
+            model: gpt-3.5-turbo-16k-0613
+            presencePenalty: 0
+            stop: ""
+            temperature: 0.5
+            top_p: 1
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract JSON" O_kQYullyGEwGT5eMwdnF/input
+          visualData: 1078.5782379594928/350.29203286937064/200/48//
+        '[eHM2e55V97d2FrSMy62Tn]:graphInput "Graph Input"':
+          data:
+            dataType: number
+            defaultValue: ""
+            id: actionsCount
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: Input type label" QE95TyiKWHdnBx7er9QR1/default'
+          visualData: -185.25210224995368/-57.80732171186571/300/44//
+        '[g_pek4OYXvAef9ZPN-v6t]:text "Text: Main prompt"':
+          data:
+            text: >
+              Please convert the following actions list into a guide that helps
+              navigate elements on a webpage and learn how to perform a
+              workflow.
+
+
+              Each action in the list should be represented as a "step". There are {{actionsCount}} actions in the transcript which should result in {{actionsCount}} steps being created.
+
+
+              Each step should be succinct with no more than 80 words. 
+
+              - A good step body is actionable and often uses formatting like bullet points. 
+
+              - Its CTA button should default to "next" which marks the step as completed.
+
+
+              Please return the guide in JSON, formatted like the example below. The “body” element should be formatted according to SlateJS documentation.
+
+
+              Here’s an example of a guide with 2 steps:
+
+
+              ```json
+
+              {{exampleGuide}}
+
+              ```
+
+
+              {{contentInput}}
+          outgoingConnections:
+            - output->"Chat" XmP8k04QleLsc_CKtenCV/prompt
+          visualData: 618.0944023058862/102.75854708138917/330.89925424168086/57//
+        '[wWye1ssZFbKftoqzVZKoj]:text "Default content input"':
+          data:
+            text: >-
+              Here is the transcript:
+              	BEGIN TRANSCRIPT
+              	Clicked svg: /nClicked div: /nClicked div: Using Bento: Tagging Users via CSV/nClicked div: Add Tags via CSV/nClicked div: To add tags via CSV, follow these steps:/nClicked button: Preview & Style/nClicked button: Targeting/nClicked input: /nClicked button: Save guide
+              	END TRANSCRIPT
+
+
+              	
+              	Here is the website:
+              	BEGIN WEBSITE
+
+
+
+
+              	
+              /customers/library/resource-center/styles/analytics/data-and-integrationsSwitch organization (Carnos-MayaAI)Org settings [/settings/organization]QA Tools [/qa-tools]Sign out Justin KwokOnboarding powered by Bento! [https://www.trybento.co]
+
+              Library
+              	END WEBSITE
+          outgoingConnections:
+            - output->"Graph Input" xQElCxg7rJRILAEU5ZWhL/default
+          visualData: -584.9596227513745/127.50857647985335/300/45//
+        '[xQElCxg7rJRILAEU5ZWhL]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: contentInput
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: content input" 98pSrjFtne2tD5ZhM8mMI/default'
+          visualData: -187.1428081664368/150.18420489381737/300/43//
+    9xqrr-u0XE2mOonIOvrMh:
+      metadata:
+        description: Generate guides from various input types
+        id: 9xqrr-u0XE2mOonIOvrMh
+        name: Guide generation
+      nodes:
+        '[2tWy6js2YK6dxVVDAZ1Kn]:text "Text: Main prompt"':
+          data:
+            text: >
+              Please convert the following {{inputTypeLabel}} into a guide that
+              helps users learn how to use a product. 
+
+
+              A guide should have a title that is less than 20 words in length.
+
+
+              A guide should consist of 3 to 5 steps.
+
+
+              Every step should have the following: 
+
+              - A succinct title, no more than 40 characters 
+
+              - A step body with no more than 100 words. A good step body outlines why a user may want to do a certain action as well as actionable steps to doing it. It often uses formatting like bullet points to make it more readable. Where possible, steps have images that make it easier to understand what a user should do.
+
+              - A Call to action (CTA). A CTA will be shown as a button, so should offer button text. Button text should be no more than 25 characters. Sometimes a CTA should take the user to a part of the app or to an external URL. In those cases, also add in the URL. 
+
+
+              Please return the guide in JSON, formatted like the example below. The “body” element should be formatted according to SlateJS documentation.
+
+              Please write all titles in sentence case.
+
+
+              Here’s an example of a guide with 2 steps:
+
+
+              ```json
+
+              {{exampleGuide}}
+
+              ```
+
+
+              {{contentInput}}
+          outgoingConnections:
+            - output->"Chat" G_dGVNAE4uMrl8fTYUSQm/prompt
+          visualData: 654.4346439152731/131.4482115098526/330.89925424168086/29//
+        '[FCw0A9d7RY9lCSdeC_lIb]:text "Default content input"':
+          data:
+            text: >-
+              Here is the transcript:
+              	BEGIN TRANSCRIPT
+              	Clicked svg: /nClicked div: /nClicked div: Using Bento: Tagging Users via CSV/nClicked div: Add Tags via CSV/nClicked div: To add tags via CSV, follow these steps:/nClicked button: Preview & Style/nClicked button: Targeting/nClicked input: /nClicked button: Save guide
+              	END TRANSCRIPT
+
+
+              	
+              	Here is the website:
+              	BEGIN WEBSITE
+
+
+
+
+              	
+              /customers/library/resource-center/styles/analytics/data-and-integrationsSwitch organization (Carnos-MayaAI)Org settings [/settings/organization]QA Tools [/qa-tools]Sign out Justin KwokOnboarding powered by Bento! [https://www.trybento.co]
+
+              Library
+              	END WEBSITE
+          outgoingConnections:
+            - output->"Graph Input" nXh3t-Hg6rnd4l_m38vg6/default
+          visualData: -584.9596227513745/127.50857647985335/300/45//
+        '[FyF6zaNSLxP9i_RD5-Spt]:context "Context: Input type label"':
+          data:
+            dataType: string
+            defaultValue: article
+            id: inputTypeLabel
+            useDefaultValueInput: true
+          description: Article, transcript, etc. Tells GPT what it is looking at.
+          outgoingConnections:
+            - 'data->"Text: Main prompt" 2tWy6js2YK6dxVVDAZ1Kn/inputTypeLabel'
+          visualData: 199.7029369631174/-64.81184205715485/300/28//
+        '[G_dGVNAE4uMrl8fTYUSQm]:chat "Chat"':
+          data:
+            cache: true
+            enableFunctionUse: false
+            frequencyPenalty: 0
+            headers: []
+            maxTokens: 15000
+            model: gpt-3.5-turbo-16k-0613
+            presencePenalty: 0
+            stop: ""
+            temperature: 0.5
+            top_p: 1
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract JSON" nUhZsqj-Qjza1E8cCRPe4/input
+          visualData: 1078.5782379594928/350.29203286937064/200/48//
+        '[X17WYByGZassL0iHIPVwi]:text "Text: Example Guide"':
+          data:
+            text: >-
+              {
+                "guideTitle": "Getting started with Chat GPT",
+                "steps": [
+                  {
+                    "title": "Generate a prompt",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Prompts are the main way of getting information from all of the GPT models. You should be clear with the expected outcome of a prompt."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Generate your first prompt",
+                    "ctaUrl": "https://chat.openai.com/"
+                  },
+                  {
+                    "title": "Workflow designer",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Let's build one of the most common contract types: NDAs. To start, click \"Workflow designer\". Let's start with using your own document."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Done"
+                  },
+                  {
+                    "title": "Publish workflow",
+                    "body": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "You can publish your workflow after resolving any errors!"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "text": "Simply click into each of the errors to be taken directly to the part of the workflow that needs to be ammended."
+                          }
+                        ]
+                      }
+                    ],
+                    "ctaText": "Done"
+                  }
+                ]
+              }
+          outgoingConnections:
+            - 'output->"Context: example guide" ecOGsgMpUPXFd1u3Zb7y6/default'
+          visualData: -191.03610664618225/393.94162667936223/300/42//
+        '[d5qL-nzb1jRL1Vv-b1hXL]:text "Text"':
+          data:
+            text: actions list
+          outgoingConnections:
+            - output->"Graph Input" fWTrRR8PACGTLvAoLNzfg/default
+          visualData: -629.2972087289822/-107.92056659171045/300/46//
+        '[ecOGsgMpUPXFd1u3Zb7y6]:context "Context: example guide"':
+          data:
+            dataType: string
+            id: exampleGuide
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Text: Main prompt" 2tWy6js2YK6dxVVDAZ1Kn/exampleGuide'
+          visualData: 207.52124211839111/512.2001335288538/300/23//
+        '[fWTrRR8PACGTLvAoLNzfg]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: inputTypeLabel
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: Input type label" FyF6zaNSLxP9i_RD5-Spt/default'
+          visualData: -185.25210224995368/-57.80732171186571/300/44//
+        '[korrAVtC1tj7SxKaByFkE]:graphOutput "Graph Output"':
+          data:
+            dataType: object
+            id: output
+          visualData: 1758.222971320233/325.82934404424094/300/55//
+        '[nUhZsqj-Qjza1E8cCRPe4]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - output->"Graph Output" korrAVtC1tj7SxKaByFkE/value
+          visualData: 1385.1529971030002/361.3654972317604/280/54//
+        '[nXh3t-Hg6rnd4l_m38vg6]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: contentInput
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: content input" rzymZdwG2Q1dXjNj7_sx6/default'
+          visualData: -187.1428081664368/150.18420489381737/300/43//
+        '[rzymZdwG2Q1dXjNj7_sx6]:context "Context: content input"':
+          data:
+            dataType: string
+            id: contentInput
+            useDefaultValueInput: true
+          description: The main input content that GPT should be looking at
+          outgoingConnections:
+            - 'data->"Text: Main prompt" 2tWy6js2YK6dxVVDAZ1Kn/contentInput'
+          visualData: 202.22930670602705/144.0980973274141/300/21//
+    RvxhZyHngNNvETTXPSHAO:
+      metadata:
+        description: ""
+        id: RvxhZyHngNNvETTXPSHAO
+        name: Snazzy GPT
+      nodes:
+        '[3pUnMNY-M502-AaBlOB_d]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: output
+          visualData: 1558.5374952280872/405.8648688308854/300/14//
+        '[5Q6Ab3JO9nV5QJlfrQr5J]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: stepDescription
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: Step content" Fty_reuLNA-UOng3MkVwd/default'
+          visualData: -62.77333103610937/161.61544565342209/300/15//
+        '[Fty_reuLNA-UOng3MkVwd]:context "Context: Step content"':
+          data:
+            dataType: string
+            id: stepDescription
+            useDefaultValueInput: true
+          description: Content of the step that needs shortening.
+          outgoingConnections:
+            - data->"Prompt" ue_h71vIz-MGDZVClgH6h/stepDescription
+          visualData: 400/286/300/8//
+        '[TvGcOAUE8lew-DvwW4Etm]:text "Text: Default step content"':
+          data:
+            text: >
+              Payday enables your team to do these amazing things with billing
+              and payments:
+
+
+              - Send international payments in local currencies without FX fees
+
+              - Payments processed in less than 2 hours
+
+              - Fewer accounting errors with AI
+
+
+              Feel free to click anywhere on the page to learn more. Each button will lead you to an exciting new adventure of Payday goodness and unlock your experience piece by piece.
+          outgoingConnections:
+            - output->"Graph Input" 5Q6Ab3JO9nV5QJlfrQr5J/default
+          visualData: -466.83226384417287/59.58657869192484/300/16//
+        '[jMGXov6R2ztXX0mHFQ0t2]:chat "Chat"':
+          data:
+            cache: false
+            enableFunctionUse: false
+            frequencyPenalty: 0
+            maxTokens: 1024
+            model: gpt-3.5-turbo
+            presencePenalty: 0
+            stop: ""
+            temperature: 0.5
+            top_p: 1
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Graph Output" 3pUnMNY-M502-AaBlOB_d/value
+          visualData: 1234/385/200/4//
+        '[ue_h71vIz-MGDZVClgH6h]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: >-
+              """ {{stepDescription}} """ Follow these instructions:
+
+                - retain existing formatting.
+                - if you detect language that explains why something is valuable, keep that.
+                - make it more concise and action oriented.
+                - show instructions in bullet points.
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" jMGXov6R2ztXX0mHFQ0t2/prompt
+          visualData: 863/295/250/5//
+    SBsxobmPkQh3a07Lw94vw:
+      metadata:
+        description: ""
+        id: SBsxobmPkQh3a07Lw94vw
+        name: Targeting Tests/Test - Validation user input
+      nodes:
+        '[GQGJMG_lWU0hrRJRK4lWo]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: expectedOutput
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Destructure" pnrcpipb4bmvZSFAMKNc0/object
+          visualData: 440.66090888811266/690.0580459067921/330/3//
+        '[HFH9-_IlVfVO4W0xXLS-O]:toJson "To JSON"':
+          data:
+            indented: true
+          outgoingConnections:
+            - json->"Compare" TqZjS8hnfXkd5tsRsCGkk/a
+          visualData: 1410.1279933494404/514.9212746151929/205/13//
+        '[HZFTiHG3s829M3A-v3TYs]:toJson "To JSON"':
+          data:
+            indented: true
+          outgoingConnections:
+            - json->"Compare" TqZjS8hnfXkd5tsRsCGkk/b
+          visualData: 1414.7416236197478/688.7013481300934/205/15//
+        '[TqZjS8hnfXkd5tsRsCGkk]:compare "Compare"':
+          data:
+            comparisonFunction: ==
+          outgoingConnections:
+            - output->"Graph Output" jIYscUEBRwXF2oxXKRdjB/value
+          visualData: 1791.5214290281601/599.5044962374898/190/17//
+        '[V8osGccQIuc4gDJdGG-TM]:destructure "Destructure"':
+          data:
+            paths:
+              - $.output
+          outgoingConnections:
+            - match_0->"To JSON" HFH9-_IlVfVO4W0xXLS-O/data
+          visualData: 970.2952409134979/521.0727816422691/280/9//
+        '[jIYscUEBRwXF2oxXKRdjB]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: output
+          visualData: 2143.6952063282674/588.7393589401064/330/18//
+        '[pnrcpipb4bmvZSFAMKNc0]:destructure "Destructure"':
+          data:
+            paths:
+              - $.output
+          outgoingConnections:
+            - match_0->"To JSON" HZFTiHG3s829M3A-v3TYs/data
+          visualData: 971.833117670267/708.6937459680909/280/12//
+        '[rKI85rF9dEm4L7jIMvK1b]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: false
+          visualData: 437.3031884450312/324.7163282931665/330/null//
+        '[xrm_Ew6kHBKp-U8fSm8zw]:graphInput "Graph Input"':
+          data:
+            dataType: object
+            id: output
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Destructure" V8osGccQIuc4gDJdGG-TM/object
+          visualData: 434.3554770405455/505.56734341366695/330/4//
+    e0un-xr6DoiUgZ4NxSo3z:
+      metadata:
+        description: ""
+        id: e0un-xr6DoiUgZ4NxSo3z
+        name: Targeting Tests/Test - User input to targeting rule
+      nodes:
+        '[8RPr6FGSz__Lj0wLWo6x8]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: output
+          visualData: 1547.5147750852902/327.42664506857636/330/6//
+        '[GNC3TRpbfBxKS0Hw0S_5y]:graphInput "Graph Input"':
+          data:
+            dataType: string
+            id: input
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"Subgraph" dDb-FcOVCBW_Xrv1j444R/userInput
+          visualData: 392/310/330/3//
+        '[dDb-FcOVCBW_Xrv1j444R]:subGraph "Subgraph"':
+          data:
+            graphId: oaxag9jRTlYJtR66h0nxe
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - output->"Graph Output" 8RPr6FGSz__Lj0wLWo6x8/value
+          visualData: 997.2240245944122/321.4289257171771/330/5//
+    oaxag9jRTlYJtR66h0nxe:
+      metadata:
+        description: ""
+        id: oaxag9jRTlYJtR66h0nxe
+        name: Targeting rule generation
+      nodes:
+        '[-eEMeTeteu7gFkMVpSzHt]:text "Text: Sample Array Attrs"':
+          data:
+            text: '["featureFlags"]'
+          outgoingConnections:
+            - 'output->"Graph Input: Account Arr Attrs"
+              KFM8RRhquAgS9f_lo1xef/default'
+          visualData: -994.5106578107899/752.3652820113454/330/151//
+        '[2lVMjt1te7H5vZQncFoMJ]:graphInput "Graph Input: User Arr Attrs"':
+          data:
+            dataType: string
+            id: availableUserArrayAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Context" 4egXxIWBJRsRQMM9PjELt/default
+          visualData: -575.5276447715216/917.5881069334081/330/139//
+        '[3EyQzErE1ABIYwWivQPhz]:graphInput "Graph Input: User attrs"':
+          data:
+            dataType: string
+            id: availableUserAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: Available user attributes"
+              9ww2dcR79cNim_1HqKv4D/default'
+          visualData: -574.7814495605726/745.8344803242833/330/121//
+        '[4aSf5RSAIx8ee01Fhmw6f]:graphOutput "Graph Output: Rules JSON"':
+          data:
+            dataType: object
+            id: output
+          visualData: 1552.5430453667636/74.98401957010537/330/194//
+        '[4egXxIWBJRsRQMM9PjELt]:context "Context"':
+          data:
+            dataType: string
+            id: availableUserArrayAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" 60xR0JTDw3cEKiY1C51Ej/availableUserArrayAttributes
+          visualData: -150.17218656206168/922.6070503931068/330/124//
+        '[4rdLmzKKfvpLcq3UBdB4K]:text "Text: Sample Array Attrs"':
+          data:
+            text: "[]"
+          outgoingConnections:
+            - 'output->"Graph Input: User Arr Attrs"
+              2lVMjt1te7H5vZQncFoMJ/default'
+          visualData: -997.7334647213665/1099.041846918219/330/149//
+        '[60xR0JTDw3cEKiY1C51Ej]:prompt "Prompt"':
+          data:
+            computeTokenCount: true
+            enableFunctionCall: false
+            promptText: >
+              Please generate groups of rules given this user request.
+
+
+              This is the user request:
+
+
+              START REQUEST
+
+              {{userInput}}
+
+              END REQUEST
+
+
+              This should result in two sets of distinct rule definitions: one for accounts, one for users. Users belong to accounts.
+
+
+              Pay attention to the following constraints:
+
+              - If no rule definition is provided for either accounts or users, then it is of type "all". In this case groups should be an empty list. Otherwise it is of type "attribute_rules"
+
+              - Attributes for accounts are not available should not be used in the user rule definitions, and vice versa.
+
+              - If a particular attribute is not mentioned, do not include it.
+
+              - Do not duplicate rules.
+
+              - Attributes come in two types
+                - Arrays of strings
+                - Everything else, which are individual values
+
+              Rule definitons are defined as such:
+
+              - We can have one or more groups of rules
+
+              - Each group can have one or more rules
+
+              - For a set of rules to match, any group can be true, and all rules within a group must be true
+
+              - A rule has the following properties:
+                - An attribute type
+                - A rule type, which is one of: equals, not equals
+                - A value type, which is one of: string, number, boolean
+                - A value, of type value type
+                  - If the value type is date, the value should be a date formatted `YYYY-MM-DD`. If a relative date is requested, format it like so: `TODAY - (dayAgoRelativeToday)` where dayAgoRelativeToday is number of days before today, and can equal 0 or be negative.
+
+              These attributes are available for account rule definitions:
+
+
+              START ACCOUNT ATTRIBUTES
+
+              ```json
+
+              {{availableAccountAttributes}}
+
+              ```
+
+              END ACCOUNT ATTRIBUTES
+
+
+              START ACCOUNT ARRAY ATTRIBUTES
+
+              ```json
+
+              {{availableAccountArrayAttributes}}
+
+              ```
+
+              END ACCOUNT ARRAY ATTRIBUTES
+
+
+              These attributes are available for user rule definitions:
+
+
+              START USER ATTRIBUTES
+
+              ```json
+
+              {{availableUserAttributes}}
+
+              ```
+
+              END USER ATTRIBUTES
+
+
+              START USER ARRAY ATTRIBUTES
+
+              ```json
+
+              {{availableUserArrayAttributes}}
+
+              ```
+
+              END USER ARRAY ATTRIBUTES
+
+
+              Please output in JSON only. Include one definition for accounts and one for users. The key for the users definition should be "accountUser".
+
+
+              Definitions should follow this JSON schema:
+
+              ```json
+
+              {{jsonSchema}}
+
+              ```
+            text: ""
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" f7DTqfy1AvZQFaVjvSwDF/prompt
+            - output->"Chat" f7DTqfy1AvZQFaVjvSwDF/systemPrompt
+            - 'tokenCount->"Graph Output: Tokens" qe9oA3dEM24g5MMWEr7va/value'
+          visualData: 422.01120789897766/176.79662167836474/280/148//
+        '[7uGOiDGZ_YKQVAXw3NxWP]:graphInput "Graph Input: Account attrs"':
+          data:
+            dataType: string
+            id: availableAccountAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: Available account attributes"
+              D1RJmdMyhPa4xzOCV-jeb/default'
+          visualData: -584.8035497367464/384.7749237072463/330/201//
+        '[9ww2dcR79cNim_1HqKv4D]:context "Context: Available user attributes"':
+          data:
+            dataType: string
+            id: availableUserAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" 60xR0JTDw3cEKiY1C51Ej/availableUserAttributes
+          visualData: -150.03246489759937/746.0566343184101/330/120//
+        '[BzhgSaeo-3KHtdtZh6rXm]:extractJson "Extract JSON"':
+          outgoingConnections:
+            - 'noMatch->"Graph Output: No match" EyPwf_DzIw8flOM4ncHSg/value'
+            - 'output->"Graph Output: Rules JSON" 4aSf5RSAIx8ee01Fhmw6f/value'
+          visualData: 1172.9803654646/193.33928822901404/280/97//
+        '[D1RJmdMyhPa4xzOCV-jeb]:context "Context: Available account attributes"':
+          data:
+            dataType: string
+            id: availableAccountAttributes
+            promptText: ""
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" 60xR0JTDw3cEKiY1C51Ej/availableAccountAttributes
+          visualData: -143.2304659417789/364.92300165726294/330/156//
+        '[EyPwf_DzIw8flOM4ncHSg]:graphOutput "Graph Output: No match"':
+          data:
+            dataType: string
+            id: noMatch
+          visualData: 1551.5582354103817/263.3311216924434/330/207//
+        '[KFM8RRhquAgS9f_lo1xef]:graphInput "Graph Input: Account Arr Attrs"':
+          data:
+            dataType: string[]
+            id: availableAccountArrayAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Context" bMOPj7wXCFCVboRQI5jJZ/default
+          visualData: -580.5465882312203/576.2999516739003/330/137//
+        '[OrahOKaLbtjMqUXGIMt4q]:graphOutput "Graph Output: Response Tokens"':
+          data:
+            dataType: number
+            id: responseTokens
+          visualData: 1196.7672748692657/564.2602320497135/330/193//
+        '[RUx14fL-woqcQqNQGCdO6]:text "Text: JSON schema"':
+          data:
+            text: >
+              {
+                "$schema": "http://json-schema.org/draft-07/schema#",
+                "type": "object",
+                "properties": {
+              		"type": {
+              			"type": "string",
+              			"enum": ["all", "attribute_rules"]
+              		}
+                  "groups": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "rules": {
+                          "type": "array",
+                          "items": {
+                            "anyOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "attribute": {
+                                    "type": "string"
+                                  },
+                                  "ruleType": {
+                                    "type": "string",
+                                    "enum": ["all", "any", "only", "none"]
+                                  },
+                                  "valueType": {
+                                    "type": "string",
+                                    "const": "stringArray"
+                                  },
+                                  "value": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "required": ["attribute", "ruleType", "valueType", "value"]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "attribute": {
+                                    "type": "string"
+                                  },
+                                  "ruleType": {
+                                    "type": "string",
+                                    "enum": ["eq", "ne"]
+                                  },
+                                  "valueType": {
+                                    "type": "string",
+                                    "const": "boolean"
+                                  },
+                                  "value": {
+                                    "type": "boolean"
+                                  }
+                                },
+                                "required": ["attribute", "ruleType", "valueType", "value"]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "attribute": {
+                                    "type": "string"
+                                  },
+                                  "ruleType": {
+                                    "type": "string",
+                                    "enum": ["eq", "ne"]
+                                  },
+                                  "valueType": {
+                                    "type": "string",
+                                    "const": "text"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["attribute", "ruleType", "valueType", "value"]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "attribute": {
+                                    "type": "string"
+                                  },
+                                  "ruleType": {
+                                    "type": "string",
+                                    "enum": ["gt", "lt"]
+                                  },
+                                  "valueType": {
+                                    "type": "string",
+                                    "const": "date"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": ["attribute", "ruleType", "valueType", "value"]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "attribute": {
+                                    "type": "string"
+                                  },
+                                  "ruleType": {
+                                    "type": "string",
+                                    "enum": ["eq", "gt", "lt"]
+                                  },
+                                  "valueType": {
+                                    "type": "string",
+                                    "const": "number"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": ["attribute", "ruleType", "valueType", "value"]
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "required": ["rules"]
+                    }
+                  }
+                },
+                "required": ["groups", "type"]
+              }
+          outgoingConnections:
+            - 'output->"Context: JSON Schema" zzKrgJ7im1MaDT8fuBGjB/default'
+          visualData: -584.3129024790776/-312.33847285591236/330/209//
+        '[TlioLcXwaJHJHsrzqj2yS]:graphInput "Graph Input: User prompt"':
+          data:
+            dataType: string
+            id: userInput
+            useDefaultValueInput: true
+          outgoingConnections:
+            - 'data->"Context: User input" sy3KVbIj-JQxNp8OzlJsd/default'
+          visualData: -583.0932945450048/128.61577509555798/330/196//
+        '[bMOPj7wXCFCVboRQI5jJZ]:context "Context"':
+          data:
+            dataType: string
+            id: availableAccountArrayAttributes
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt"
+              60xR0JTDw3cEKiY1C51Ej/availableAccountArrayAttributes
+          visualData: -142.64377137251367/573.790479944051/330/123//
+        '[bqLkPO1yJU4JR0oAMSgkq]:text "Text: Sample Attrs"':
+          data:
+            text: '["ViewedUpsellCampaignLast8Weeks","name","CompletedUpsellCampaign","CustomerLocations","TotalLocations","WhiteSpace","PulseScoreLast7Days","EmailCrossSellCampaignQ22023","CountOfApplicantAsHiredLast3Days","MostStaleApplicantLink","StaleApplicantsAppliedLast14Days","HiresLast7Days","DaysFromCOSKickoff","HiresLast3Days","AvailableDateRangeTooHighOrLow","ClientHealth","240","fullName","email","createdAt","241","242","243","bentoExtension","createdAt","BottomPerformingGmsNotCompletingOnboarding","0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","HrsOfAvailabilityThisWeek","DaysOfAvailabilityThisWeek","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","env","permittedLocationCount","194","195","196","197","198","199","200","hasOnboarding","201","202","203","204","locationCount","role","205","206","207","208","209","210","211","212","213","214","ResponsiblePositions","externalId","AvailableDateRange","MinimumSchedulingNotice","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","CalAvailabilitywPublishedPosition","237","238","239","company_id","uuid","anonymousId","company_staff_id","userId","CompanyStatus","CustomerSegment","BaseBrands","Industries","CurrentMRR","AE","AEIsActive","COS","COSIsActive","CSM","CSMIsActive","PublishedPositions","PublishedPositions_w_out_Pay","PublishedPositions_w_out_Benefits","OnboardingKickoffDate","OnboardingKickoffStatus","OnboardingCompletionDate","OnboardingStatus","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","CustomerFirstPaymentDate","user_id","ManualPositionAssignment","TeamManagementOnboarding","OnboardingFunctionModule","TeamRecordsFunctionModule","AdHocDocsFunctionModule","SurveyFunctionModule","Q3SMBUpsellMarketingTestGroups","DaysToLaunchQ3SMBUpsellMarketingTestGroups","JobPostingsWorkflowRedesignExistingCustomer","JobPostingsWorkflowRedesignNewCustomer","MostRecentStaleApplicantPositionId","Bento
+              tag","externalId","companyId","companyName"]'
+          outgoingConnections:
+            - 'output->"Graph Input: Account attrs"
+              7uGOiDGZ_YKQVAXw3NxWP/default'
+          variants:
+            - data:
+                text: '["name","fullName","email","teamSize","createdAt","role","createdAt","industry","performance","env","team","bentoExtension","randomNumber","subsidiaries","randomNumber","startDate","alias","location","firstName","payday_alias","plan","paid","onboarding","NPS
+                  Score","externalId","externalId","Upsell"]'
+              id: Average Org
+            - data:
+                text: '["hasMailbox","createdAt","role","aiCopywriterTrialStatus","createdAt","hasSalesforceIntegration","hasHubspotIntegration","hasCrmSyncEnabled","name","fullName","email","domain","group_type","id","account_id","hasLinkedinNetworkFilter","id","hasChromeExtension","hasNewCustomTrackerEnabled","hasFlexibleSequences","hasSsnlEnabled","hasDeliverabilityCenterEnabled","Bento
+                  tag","hasSavedSearchSubscriptionsEnabled","hasSequenceRevamp","hasAiCopywriterInSequences","hasAiCopywriterInSequences","hasInboxPlacementTestResults","hasInboxPlacementTestResults","hasAiReplier","hasAtLeastTwoSequencesWithSequenceRevamp","Bento
+                  tag","hasAiCopywriterTrial","hasNewCompanyPageEnabled","hasNewCompanyPageEnabled","hasAiCopywriter","dialer","ai_copy_gen","contact_tracking","ai_copywriter_trial","jca_dynamic_report_integration","account_page_ui_on_extension","inbox_placement_test_results","lead_list_stats_read_replica","import_hubspot_contacts_to_list","import_hubspot_contacts_to_sequence","hasDialer","hasAiCopyGen","hasContactTracking","hasAiCopywriterTrial","hasJcaDynamicReportIntegration","hasAccountPageUiOnExtension","hasLeadListStatsReadReplica","hasImportHubspotContactsToList","hasImportHubspotContactsToSequence","hasDialer","hasAiCopyGen","hasContactTracking","hasJcaDynamicReportIntegration","hasAccountPageUiOnExtension","hasLeadListStatsReadReplica","hasImportHubspotContactsToList","hasImportHubspotContactsToSequence","hasPreviousOwnerSearcherFilters","hasConditionalSkipTasks","hasCustomSmtpProvider","hasCookieClobberingEnabled","hasLinkedinOnlySequences","hasPrioritizeManualEmails","hasAiCopywriterSequences","hasCachedSpentCredits","hasBdrTeamOnly","hasRevenueReport","hasNewSequenceEditPage","hasAiReplierAllMessages","hasTwilioDialer","hasUseSpentCreditMaterializedView","hasExtensionRollback","hasUseStatsMaterializedView","hasUseRecentlyContactedTable","hasCompetitiveIntelligenceOnSequenceLeadDataFields","hasFastSearcher","hasAutoLiExecution","hasAnalyticsCSVExports","hasLinkedinNetworkFilter","hasPreviousOwnerSearcherFilters","hasConditionalSkipTasks","hasCustomSmtpProvider","hasCookieClobberingEnabled","hasLinkedinOnlySequences","hasPrioritizeManualEmails","hasAiCopywriterSequences","hasCachedSpentCredits","hasBdrTeamOnly","hasRevenueReport","hasNewSequenceEditPage","hasAiReplierAllMessages","hasTwilioDialer","hasUseSpentCreditMaterializedView","hasExtensionRollback","hasUseStatsMaterializedView","hasUseRecentlyContactedTable","hasCompetitiveIntelligenceOnSequenceLeadDataFields","hasFastSearcher","hasAutoLiExecution","hasAnalyticsCSVExports","hasCompetitiveIntelligence","hasApiIntegration","hasSandboxSalesforce","hasProcessDomains","hasHideEmailWarmup","hasHasExternalPhoneCallsEnabled","hasEventEnrichment","hasCanaryChromeExtension","hasShowLinkedinBulkAction","hasAccountSearcherFilters","hasCachedTokens","hasCompetitiveIntelligence","hasApiIntegration","hasSandboxSalesforce","hasProcessDomains","hasHideEmailWarmup","hasHasExternalPhoneCallsEnabled","hasEventEnrichment","hasCanaryChromeExtension","hasShowLinkedinBulkAction","hasAccountSearcherFilters","hasCachedTokens","createdSequenceForAutomaticLiExecution","externalId","externalId","hasAnalyticsV2","hasAnalyticsV2","hasNewOnboardingFlow","hasNewOnboardingFlow","hasProfileRefresher","hasProfileRefresher","hasBisGating","hasBisGating","hasPersonas","hasPersonas","hasNewEmailGuessing","hasNewEmailGuessing","hasNewSidebar","hasNewSidebar","hasImportFromCrmWithMappings","hasImportFromCrmWithMappings","hasStaleProfileRefresh","hasStaleProfileRefresh","hasNewCrmCustomFields","hasNewCrmCustomFields","hasLinkedinStats","hasLinkedinStats","hasMillionVerifier","hasMillionVerifier","hasScheduledEmails","hasScheduledEmails","hasCrmReportsAsSearcherFilters","hasCrmReportsAsSearcherFilters","hasJcaChangedCompanySalesforcePush","hasJcaChangedCompanySalesforcePush","hasOverviewNewTimeRange","hasOverviewNewTimeRange","hasSimplerSequenceCreation","hasSimplerSequenceCreation","hasNewHeadcountFilter","hasNewHeadcountFilter","hasDiscardedProfile","hasDiscardedProfile","hasPhoneWaterfallV2","hasPhoneWaterfallV2"]'
+              id: Large attrs
+            - data:
+                text: '["ViewedUpsellCampaignLast8Weeks","name","CompletedUpsellCampaign","CustomerLocations","TotalLocations","WhiteSpace","PulseScoreLast7Days","EmailCrossSellCampaignQ22023","CountOfApplicantAsHiredLast3Days","MostStaleApplicantLink","StaleApplicantsAppliedLast14Days","HiresLast7Days","DaysFromCOSKickoff","HiresLast3Days","AvailableDateRangeTooHighOrLow","ClientHealth","240","fullName","email","createdAt","241","242","243","bentoExtension","createdAt","BottomPerformingGmsNotCompletingOnboarding","0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","HrsOfAvailabilityThisWeek","DaysOfAvailabilityThisWeek","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","env","permittedLocationCount","194","195","196","197","198","199","200","hasOnboarding","201","202","203","204","locationCount","role","205","206","207","208","209","210","211","212","213","214","ResponsiblePositions","externalId","AvailableDateRange","MinimumSchedulingNotice","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","CalAvailabilitywPublishedPosition","237","238","239","company_id","uuid","anonymousId","company_staff_id","userId","CompanyStatus","CustomerSegment","BaseBrands","Industries","CurrentMRR","AE","AEIsActive","COS","COSIsActive","CSM","CSMIsActive","PublishedPositions","PublishedPositions_w_out_Pay","PublishedPositions_w_out_Benefits","OnboardingKickoffDate","OnboardingKickoffStatus","OnboardingCompletionDate","OnboardingStatus","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","CustomerFirstPaymentDate","user_id","ManualPositionAssignment","TeamManagementOnboarding","OnboardingFunctionModule","TeamRecordsFunctionModule","AdHocDocsFunctionModule","SurveyFunctionModule","Q3SMBUpsellMarketingTestGroups","DaysToLaunchQ3SMBUpsellMarketingTestGroups","JobPostingsWorkflowRedesignExistingCustomer","JobPostingsWorkflowRedesignNewCustomer","MostRecentStaleApplicantPositionId","Bento
+                  tag","externalId","companyId","companyName"]'
+              id: Many attrs
+          visualData: -995.1460280377715/411.8659892838732/330/211//
+        '[f7DTqfy1AvZQFaVjvSwDF]:chat "Chat"':
+          data:
+            cache: false
+            enableFunctionUse: false
+            frequencyPenalty: 0
+            headers: []
+            maxTokens: 4000
+            model: gpt-4
+            presencePenalty: 0
+            promptText: ""
+            stop: ""
+            temperature: 0.2
+            top_p: 1
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Extract JSON" BzhgSaeo-3KHtdtZh6rXm/input
+            - 'responseTokens->"Graph Output: Response Tokens"
+              OrahOKaLbtjMqUXGIMt4q/value'
+          visualData: 822.774279588463/171.5947107056269/230/95//
+        '[qe9oA3dEM24g5MMWEr7va]:graphOutput "Graph Output: Tokens"':
+          data:
+            dataType: number
+            id: tokens
+          visualData: 1196.650137500387/778.6606635483556/330/192//
+        '[sy3KVbIj-JQxNp8OzlJsd]:context "Context: User input"':
+          data:
+            dataType: string
+            id: userInput
+            promptText: ""
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" 60xR0JTDw3cEKiY1C51Ej/userInput
+          visualData: -119.45778197392376/128.5602972360387/330/13//
+        '[ubP9J8jDnvGr9sHZOli1y]:text "Text: Sample user prompt"':
+          data:
+            promptText: ""
+            text: Users created after three days ago
+          outgoingConnections:
+            - 'output->"Graph Input: User prompt" TlioLcXwaJHJHsrzqj2yS/default'
+          variants:
+            - data:
+                text: Accounts with feature flags "custom css" and "command center"
+              id: Basic
+            - data:
+                text: >
+                  Account is created some time in the last 5 years, and is part
+                  of the following  plans:
+
+                  - Starter
+
+                  - Enterprise
+
+                  - Basic
+
+                  - Expanded
+
+
+                  Also exclude these accounts:
+
+                  - Payday
+
+                  - AcmeCo
+
+                  - David and Sons
+
+                  - Carbon 13
+
+                  - Carbon 14
+
+                  - Derek's Hard Lemonades
+
+                  - Bonnie Belcher Brewing
+
+
+                  For users include those created in the last 5 years and are part of the following roles:
+
+                  - Admin
+
+                  - Admin assistant
+
+                  - Account God
+
+                  - Accounts holder
+
+                  - Janitor
+              id: Complex
+            - data:
+                text: >-
+                  Account names are not in the following list:
+
+                  "David & Sons","CSX Corp.","Bento Test (E)","Bento Test (J)","Scholastic Corp","ACME Corp.","Outback Steakhouse Inc.","Park Place Entertainment Corp","W.W. Grainger Inc","McLeodUSA Incorporated","Pioneer-Standard Electronics Inc.","National Oilwell Inc","Audiovox Corporation","HCA Inc.","Raytheon Company","Oracle Corp","ACME Media Corp.","ACME Co.","Blue Weave","Bento Test (M)","Alaska Air Group, Inc.","AOL Time Warner Inc.","Derek's Hard Lemonades","Pro-Fac Cooperative Inc.","Levi Strauss & Co.","Northwest Airlines Corp","AMERCO","Dana Corporation","American International Group, Inc.","Belching Bonnie Brewing","Carbon 14","Lago Leo Limited","Ventana"
+
+
+                  and, accounts that are not the following IDs:
+
+                  - 2
+
+                  - shfajafjgagj
+
+                  - 5wujjstjw5jsjw5jj
+
+                  - qry5hh5shsh5s5hh
+
+                  - wsudtxdje5tjsejesu
+
+                  - s5euuzjje
+
+
+                  And users are not named João
+              id: Attribute list
+          visualData: -1003.0253566938807/143.1976622839531/330/210//
+        '[w_r3tGYF5oQvU-xy-YZ2k]:text "Text: Sample attrs"':
+          data:
+            text: '["timesWowed", "createdAt", "location", "powerLevel", "fullName",
+              "role"]'
+          outgoingConnections:
+            - 'output->"Graph Input: User attrs" 3EyQzErE1ABIYwWivQPhz/default'
+          visualData: -996.8955762316409/925.3164780003199/330/150//
+        '[zzKrgJ7im1MaDT8fuBGjB]:context "Context: JSON Schema"':
+          data:
+            dataType: string
+            id: jsonSchema
+            useDefaultValueInput: true
+          outgoingConnections:
+            - data->"Prompt" 60xR0JTDw3cEKiY1C51Ej/jsonSchema
+          visualData: -128.30494209953247/-156.52373768309405/330/182//
+  metadata:
+    description: AI powered onboarding with Bento
+    id: A_3XgIsZ2GqYhKtekzHbX
+    title: BentoAI
+  plugins: []

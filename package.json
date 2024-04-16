@@ -1,0 +1,74 @@
+{
+  "name": "bentwo",
+  "version": "1.0.0",
+  "description": "Bento V2",
+  "main": "index.js",
+  "author": "Bento",
+  "repository": "git@github.com:trybento/bentwo.git",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "lint": "yarn workspaces foreach -piv run lint",
+    "checks": "yarn workspaces foreach -piv run checks",
+    "graphql-checks": "yarn workspaces foreach -piv run graphql-checks",
+    "test": "yarn workspaces foreach -piv run test",
+    "test:client": "yarn workspaces foreach -piv --from '{miso,shoyu}' run test",
+    "test:server": "yarn workspaces foreach -piv --from '{udon}' run test",
+    "test:watch": "yarn workspaces foreach -piv run test:watch",
+    "build": "yarn workspaces foreach -piv --from '{udon,miso,shoyu}' run build",
+    "server-and-worker": "yarn workspace udon run start-server-and-worker:dev",
+    "server": "yarn workspace udon run start:dev",
+    "restart": "yarn install && yarn migrate && yarn start",
+    "start": "concurrently --names 'UDON,MISO,SHOYU,PONTIS' --prefix-colors 'red,yellow,blue,green' \"yarn server-and-worker\" \"yarn workspace miso run dev\" \"yarn workspace shoyu run start\" \"yarn workspace pontis dev\"",
+    "migration:generate": "yarn workspace udon run migration:generate",
+    "migrate": "yarn workspace udon run migrate",
+    "migrate:revert": "yarn workspace udon run migrate:revert",
+    "seed:generate": "yarn workspace udon run seed:generate",
+    "seed": "yarn workspace udon run seed",
+    "seed:bento": "yarn seed bento",
+    "seed:acmeco": "yarn seed acmeco",
+    "generate:gql-schemas": "yarn workspace udon run generate:gql-schemas && yarn workspace shoyu run generate:gql-schemas && yarn workspace miso run generate:gql-schemas && yarn workspace pontis run generate:gql-schemas"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "aws-sdk": "^2.1358.0",
+    "concurrently": "^7.0.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "bento-common": "workspace:apps/common",
+    "miso": "workspace:apps/miso",
+    "openai": "3.3.0",
+    "pontis": "workspace:apps/pontis",
+    "shoyu": "workspace:apps/shoyu",
+    "udon": "workspace:apps/udon"
+  },
+  "resolutions": {
+    "@emotion/cache": "^11.10.5",
+    "ansi-regex": "^5.0.1",
+    "babel-loader/loader-utils": "^2.0.4",
+    "copy-webpack-plugin/loader-utils": "^2.0.4",
+    "dset": "^3.1.2",
+    "file-loader/loader-utils": "^2.0.4",
+    "html-minifier-terser": "^7.0.0",
+    "http-cache-semantics": "^4.1.1",
+    "json-schema": "^0.4.0",
+    "json5@^1.0.1": "^1.0.2",
+    "minimist": "^1.2.6",
+    "moment-timezone": "^0.5.35",
+    "moment": "^2.29.3",
+    "node-fetch": "^2.6.7",
+    "portfinder/async": "^2.6.4",
+    "protobufjs": "^6.11.3",
+    "terser": "^5.14.2",
+    "validator": "^13.7.0",
+    "webpack": "^5.78.0"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "yarn@3.1.1"
+}

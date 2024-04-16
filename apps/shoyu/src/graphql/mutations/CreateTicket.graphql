@@ -1,0 +1,5 @@
+mutation CreateTicketMutation($input: CreateTicketInput!) {
+  createTicket(input: $input) {
+    errors
+  }
+}

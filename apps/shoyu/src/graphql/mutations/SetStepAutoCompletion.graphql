@@ -1,0 +1,10 @@
+mutation SetStepAutoCompletionMutation($input: SetStepAutoCompletionInput!) {
+  setStepAutoCompletion(input: $input) {
+    errors
+    step {
+      __typename
+      entityId
+      isComplete
+    }
+  }
+}

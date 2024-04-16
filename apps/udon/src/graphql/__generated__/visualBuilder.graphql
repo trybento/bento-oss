@@ -1,0 +1,2885 @@
+# Auto-generated using 'printSchema'. Do not edit.
+
+schema {
+  query: RootType
+  mutation: Mutation
+}
+
+type RootType {
+  findVisualBuilderSession(entityId: EntityId): VisualBuilderSession
+  uiSettings: OrganizationUISettings
+  organizationDomain: String
+
+  """Features enabled for this organization"""
+  enabledFeatureFlags: [String!]!
+
+  """Attributes used for targeting"""
+  attributes: [Attribute!]!
+}
+
+type VisualBuilderSession {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The type of editor session (e.g., tag, inline embed etc.)"""
+  type: VisualBuilderSessionType!
+
+  """Data used to initialize the editor"""
+  initialData: JSONObject!
+
+  """Data representing the editors saved progress"""
+  progressData: JSONObject
+
+  """Data used to render a preview of the editor changes in Shoyu"""
+  previewData: JSONObject
+
+  """The current state of the session"""
+  state: VisualBuilderSessionState!
+}
+
+"""A unique identifier for a particular database entity."""
+scalar EntityId
+
+""""""
+enum VisualBuilderSessionType {
+  tag
+  inline
+  autocomplete
+  auto_guide_builder
+}
+
+"""
+The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSONObject @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+""""""
+enum VisualBuilderSessionState {
+  pending_url
+  in_progress
+  cancelled
+  complete
+}
+
+"""/styles customizations"""
+type OrganizationUISettings {
+  """The primary brand color of this organization"""
+  primaryColorHex: String
+
+  """The secondary brand color of this organization"""
+  secondaryColorHex: String
+
+  """The embeddable font color of this organization"""
+  fontColorHex: String
+
+  """The color used for the sidebar toggle button in HEX format"""
+  toggleColorHex: String
+
+  """The color used for the sidebar text toggle button in HEX format"""
+  toggleTextColor: String!
+
+  """The sidebar background color of this organization"""
+  sidebarBackgroundColor: String!
+
+  """The embeddable background color of this organization"""
+  embedBackgroundHex: String
+
+  """The background color of cards in the embeddable for this organization"""
+  cardBackgroundColor: String!
+
+  """The toggle style of the organization"""
+  toggleStyle: String
+
+  """The toggle text of the organization"""
+  toggleText: String
+
+  """The sidebar side of the organization"""
+  sidebarSide: String
+
+  """Whether the toggles color is inverted of the organization"""
+  isEmbedToggleColorInverted: Boolean
+
+  """
+  If the viewer has not seen the guide before and the sidebar is present, is the auto-open functionality disabled
+  """
+  isSidebarAutoOpenOnFirstViewDisabled: Boolean @deprecated(reason: "No longer an org setting, but dependent on user states")
+
+  """The app container that the sidebar should change"""
+  appContainerIdentifier: String
+
+  """The style of the sidebar"""
+  sidebarStyle: String
+
+  """Custom CSS rules set by the organization"""
+  embedCustomCss: String
+
+  """The primary color for contextual tags"""
+  tagPrimaryColor: String
+
+  """The text color for contextual tags"""
+  tagTextColor: String
+
+  """The size of dot type tags"""
+  tagDotSize: Float
+
+  """The pulse level for dot type tags"""
+  tagPulseLevel: VisualTagPulseLevelType
+
+  """The padding for badge and icon type tags"""
+  tagBadgeIconPadding: Float
+
+  """The border radius for badge and icon type tags"""
+  tagBadgeIconBorderRadius: Float
+
+  """The custom icon URL for icon type tags"""
+  tagCustomIconUrl: String
+
+  """Determine the visibility behavior of visual tags"""
+  tagVisibility: TagVisibilityType!
+
+  """The font size for step content in a guide"""
+  paragraphFontSize: Float
+
+  """The line height for step content in a guide"""
+  paragraphLineHeight: Float
+
+  """The background hex color for CYOA guides"""
+  cyoaBackgroundColor: String
+
+  """The background hex color for CYOA guide cards"""
+  cyoaOptionBackgroundColor: String
+
+  """Whether the CYOA guide cards background color is dark"""
+  isCyoaOptionBackgroundColorDark: Boolean!
+
+  """The text hex color for CYOA guides"""
+  cyoaTextColor: String
+
+  """The guides themes for this organization"""
+  theme: ThemeType!
+
+  """The offset in pixels for the X anchor of floating components"""
+  floatingAnchorXOffset: Float!
+
+  """The offset in pixels for the Y anchor of floating components"""
+  floatingAnchorYOffset: Float!
+
+  """Visual style of a completed step in the embeddable"""
+  stepCompletionStyle: String!
+
+  """Whether the sidebar should be auto-injected on the customer's page"""
+  injectSidebar: Boolean!
+
+  """
+  Determines the inline component behaviour when no onboarding guides are available
+  """
+  inlineEmptyBehaviour: InlineEmptyBehaviourType!
+
+  """Determines the sidebar visibility under specific conditions"""
+  sidebarVisibility: SidebarVisibilityType!
+
+  """Determines if the sidebar is available to the user"""
+  sidebarAvailability: SidebarAvailabilityType!
+
+  """Determines the behavior of the sidebar toggle when clicked"""
+  embedToggleBehavior: EmbedToggleBehaviorType!
+
+  """The border color of a CYOA card"""
+  cyoaOptionBorderColor: String!
+
+  """The shadow of a CYOA card"""
+  cyoaOptionShadow: String!
+
+  """The shadow of a CYOA card when hovered."""
+  cyoaOptionShadowHover: String!
+
+  """The header settings for sidebars"""
+  sidebarHeader: GuideHeaderSettingsType!
+
+  """The step separator borders and dividers color in HEX format"""
+  borderColor: String
+
+  """The Step separation style"""
+  stepSeparationStyle: StepSeparationStyleType
+
+  """The Inline contextual style"""
+  inlineContextualStyle: InlineContextualStyleType
+
+  """Additional branding colors of an org"""
+  additionalColors: [AdditionalColorsType!]!
+  allGuidesStyle: AllGuidesStyleType!
+
+  """URLs where the sidebar component shoud not appear"""
+  sidebarBlocklistedUrls: [String]!
+
+  """Quick links defined by the org"""
+  quickLinks: [QuickLink]!
+
+  """Help center settings for the org"""
+  helpCenter: HelpCenter
+
+  """Help center styles for the org"""
+  helpCenterStyle: HelpCenterStyle!
+
+  """The org tooltips styles"""
+  tooltipsStyle: TooltipsStyleStyleType
+
+  """The org cta styles"""
+  ctasStyle: CtasStyleStyleType
+
+  """The org modals styles"""
+  modalsStyle: ModalsStyleStyleType
+
+  """The org banners styles"""
+  bannersStyle: BannersStyleStyleType
+
+  """The responsive settings for the embed in narrow containers"""
+  responsiveVisibility: ResponsiveVisibilityType
+}
+
+""""""
+enum VisualTagPulseLevelType {
+  none
+  standard
+}
+
+"""Determine the visibility behavior of visual tags"""
+enum TagVisibilityType {
+  always
+  active_step
+}
+
+"""Guide themes"""
+enum ThemeType {
+  standard
+  minimal
+  mailchimp
+  timeline
+  card
+  carousel
+  videoGallery
+}
+
+"""The inline behaviour when no onboarding guides are available"""
+enum InlineEmptyBehaviourType {
+  show
+  hide
+}
+
+"""The toggle visibility under specific conditions"""
+enum SidebarVisibilityType {
+  show
+  active_guides
+  active_onboarding_guides
+  hide
+}
+
+"""Whether or not the sidebar is available to users"""
+enum SidebarAvailabilityType {
+  default
+  never_open
+  hide
+}
+
+"""The behavior of the sidebar toggle"""
+enum EmbedToggleBehaviorType {
+  default
+  resource_center
+  persist
+}
+
+"""Guide header settings"""
+type GuideHeaderSettingsType {
+  type: GuideHeaderStyleType!
+  progressBar: GuideHeaderProgressBarType
+  closeIcon: GuideHeaderCloseIconType!
+  showModuleNameInStepView: Boolean!
+}
+
+"""Header base style"""
+enum GuideHeaderStyleType {
+  simple
+  bright
+  classic
+  striped
+}
+
+"""Header progress bar style"""
+enum GuideHeaderProgressBarType {
+  sections
+  continuous
+}
+
+"""Header close icon"""
+enum GuideHeaderCloseIconType {
+  downArrow
+  x
+  minimize
+}
+
+"""The Step separation style"""
+type StepSeparationStyleType {
+  type: StepSeparationType!
+  boxCompleteBackgroundColor: String
+  boxActiveStepShadow: ActiveStepShadowType!
+  boxBorderRadius: Int!
+}
+
+"""The Step separation type"""
+enum StepSeparationType {
+  border
+  box
+}
+
+"""Shadow style of active steps"""
+enum ActiveStepShadowType {
+  none
+  standard
+  custom
+}
+
+"""The Inline contextual style"""
+type InlineContextualStyleType {
+  padding: Int!
+  shadow: InlineContextualType!
+  borderRadius: Int!
+  borderColor: String
+}
+
+"""The box shadow for inline contextual guides"""
+enum InlineContextualType {
+  none
+  standard
+}
+
+"""Additional branding colors of an org"""
+type AdditionalColorsType {
+  value: String!
+}
+
+type AllGuidesStyleType {
+  allGuidesTitle: String!
+  activeGuidesTitle: String!
+  previousGuidesTitle: String!
+  previousAnnouncementsTitle: String!
+}
+
+type QuickLink {
+  url: String!
+  title: String!
+  icon: String
+}
+
+type HelpCenter {
+  source: HelpCenterSource!
+  url: String
+  liveChat: Boolean
+  issueSubmission: Boolean
+  kbSearch: Boolean
+  targeting: CommonTargeting
+}
+
+"""The help center used by the org"""
+enum HelpCenterSource {
+  intercom
+  salesforce
+  helpscout
+  zendesk
+}
+
+"""Account and account user targeting"""
+type CommonTargeting {
+  account: IntegrationTargetingSegment!
+  accountUser: IntegrationTargetingSegment!
+}
+
+"""Integration targeting segment"""
+type IntegrationTargetingSegment {
+  type: IntegrationTargetingType!
+  rules: [IntegrationTargetingRule]
+  grouping: String
+}
+
+"""The rule type of rules for an integration"""
+enum IntegrationTargetingType {
+  all
+  role
+  attribute_rules
+}
+
+"""An integration targeting attribute rule"""
+type IntegrationTargetingRule {
+  attribute: String!
+  ruleType: TargetAttributeRuleRuleTypeEnumType!
+  valueType: AttributeValueType!
+  value: TargetAttributeRuleFields!
+}
+
+""""""
+enum TargetAttributeRuleRuleTypeEnumType {
+  lt
+  lte
+  eq
+  ne
+  gte
+  gt
+  empty
+  notEmpty
+  all
+  any
+  only
+  none
+  re
+  rmt
+  rlt
+  c
+  nc
+}
+
+""""""
+enum AttributeValueType {
+  number
+  text
+  boolean
+  date
+  template
+  stringArray
+  branchingPath
+  audience
+}
+
+scalar TargetAttributeRuleFields
+
+type HelpCenterStyle {
+  supportTicketTitle: String
+  chatTitle: String
+}
+
+"""The org tooltips styles"""
+type TooltipsStyleStyleType {
+  paddingX: Int
+  paddingY: Int
+  shadow: AnnouncementShadowType
+  borderRadius: Int
+}
+
+"""The box shadow for announcements"""
+enum AnnouncementShadowType {
+  none
+  standard
+}
+
+"""The org cta styles"""
+type CtasStyleStyleType {
+  paddingX: Int
+  paddingY: Int
+  fontSize: Int
+  lineHeight: Int
+  borderRadius: Int
+}
+
+"""The org modals styles"""
+type ModalsStyleStyleType {
+  paddingX: Int
+  paddingY: Int
+  shadow: AnnouncementShadowType
+  borderRadius: Int
+  backgroundOverlayColor: String
+  backgroundOverlayOpacity: Int
+}
+
+"""The org banners styles"""
+type BannersStyleStyleType {
+  padding: BannerPaddingType
+  shadow: AnnouncementShadowType
+  borderRadius: Int
+}
+
+"""The inner padding of banners"""
+enum BannerPaddingType {
+  large
+  medium
+  small
+}
+
+"""The responsive settings for the embed in narrow containers"""
+type ResponsiveVisibilityType {
+  all: ResponsiveVisibilityBehaviorType!
+}
+
+""""""
+enum ResponsiveVisibilityBehaviorType {
+  show
+  hide
+}
+
+type Attribute {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The identifier for the attribute"""
+  name: String!
+
+  """The type of the value for this attribute"""
+  valueType: AttributeValueType!
+
+  """The type of the attribute"""
+  type: AttributeType
+}
+
+""""""
+enum AttributeType {
+  account
+  account_user
+}
+
+type Mutation {
+  """Update an existing visual builder session"""
+  updateVisualBuilderSession(input: UpdateVisualBuilderSessionInput!): UpdateVisualBuilderSessionPayload
+}
+
+type UpdateVisualBuilderSessionPayload {
+  visualBuilderSession: VisualBuilderSession
+  organization: Organization
+  errors: [String!]
+}
+
+type Organization {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  createdAt: DateTime!
+  trialStartedAt: DateTime
+  trialEndedAt: DateTime
+  allottedGuides: Int
+
+  """The name of the organization"""
+  name: String!
+  plan: OrgPlan!
+
+  """Determine if the org domain has Google SSO enabled."""
+  googleSSOEnabled: Boolean!
+
+  """The domain of the organization"""
+  domain: String
+
+  """The unique slug identifying the organization"""
+  slug: String!
+
+  """The current state of the org as a bento customer"""
+  state: OrganizationStateEnumType!
+
+  """If we need to limit the ability to consecutively propagate"""
+  controlSyncing: Boolean
+
+  """The accounts belonging to the organization"""
+  accounts: [Account!]!
+
+  """The accounts count within the organization"""
+  accountsCount: Float!
+
+  """The templates within the organization"""
+  templates: [Template!]!
+
+  """The templates count within the organization"""
+  templatesCount: Float!
+
+  """The count of guide bases that have been viewed within the organization"""
+  guideBaseCount: Int!
+
+  """A list of integrations the org has"""
+  hasIntegrations: [String]
+
+  """The users in the organization"""
+  users: [User!]!
+  hostnames: [String!]!
+  taggedElementUrls: [String!]!
+
+  """
+  [TEMP] The guide that is currently active this organization in a Chrome extension
+  """
+  activeGuide: Guide
+
+  """The branching questions in the organization"""
+  branchingQuestions: [BranchingQuestion!]!
+
+  """For use with Bento native API"""
+  bentoApiKey: SegmentApiKey
+
+  """Features enabled for this organization"""
+  enabledFeatureFlags: [String!]!
+
+  """Diagnostics for an org. Must specify keys to load data"""
+  diagnostics: OrgDiagnostics
+
+  """Check all cached diagnostic states without specifying keys"""
+  hasDiagnosticWarnings: Boolean!
+  hasAudiences: Boolean
+
+  """Whether or not the org has launched a guide base."""
+  hasLaunchedGuides: Boolean
+  hasAccountUsers: Boolean
+  inlineEmbeds: [OrganizationInlineEmbed]
+
+  """Retrieves a default URL for the visual builder entry page"""
+  visualBuilderDefaultUrl: String
+
+  """
+  Indicates whether any of the given list of entities are currently being reset
+  """
+  areEntitiesResetting(resetLevel: ResetLevelEnumType!, entityIds: [EntityId!]!): Boolean
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""Level of service this org is paying for"""
+enum OrgPlan {
+  Starter
+  Growth
+  Scale
+  Custom
+}
+
+"""The current state of the org as a bento customer"""
+enum OrganizationStateEnumType {
+  active
+  inactive
+  trial
+}
+
+type Account {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The user-supplied unique ID for the Account"""
+  externalId: String
+
+  """The name of the account"""
+  name: String!
+  archived: Boolean!
+  blockedAt: DateTime
+  blockedBy: User
+
+  """Does the account have an active account onboarding guide"""
+  hasActiveAccountGuide: Boolean!
+
+  """The attributes associated with this account"""
+  attributes: JSON!
+
+  """Does the account have an active guide with the given template"""
+  hasGuideBaseWithTemplate(templateEntityId: EntityId): Boolean!
+
+  """The count of participants who viewed guides"""
+  participantsWhoViewedGuidesCount: Int!
+
+  """Last time a user was active in this account"""
+  lastActiveAt: DateTime
+
+  """The count of guide-bases in the account"""
+  guideBasesCount: Int!
+
+  """Determine whether the account has at least one guide"""
+  hasGuides: Boolean!
+
+  """The guide bases belonging to the account"""
+  guideBases: [GuideBase!]!
+  accountUsers: [AccountUser!]!
+  primaryContact: User
+
+  """
+  When the account was created in the organization (as opposed to within Bento)
+  """
+  createdInOrganizationAt: DateTime
+}
+
+type User {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  email: String!
+  fullName: String
+  avatarUrl: String
+  phoneNumber: String
+  createdAt: DateTime!
+  isSuperadmin: Boolean!
+  extra: JSON
+  hasAssignedAccounts: Boolean!
+  organization: Organization!
+  orgSettings: OrganizationOrgSettings
+  allOrgs: [Organization]!
+  hasBentoOnboardingGuide: Boolean!
+  isBentoOnboardingGuideComplete: Boolean!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""General organization-wide settings"""
+type OrganizationOrgSettings {
+  """Are guide notification settings enabled"""
+  sendEmailNotifications: Boolean
+
+  """Default email address for notifications"""
+  fallbackCommentsEmail: String
+
+  """Are guide participant email nudges enabled"""
+  sendAccountUserNudges: Boolean
+
+  """
+  Default URL for linking to guide participants for nudges and other emails
+  """
+  defaultUserNotificationURL: String
+  webhooks: [Webhook!]
+  bentoApiKey: SegmentApiKey
+  integrationApiKeys: [IntegrationApiKey!]
+}
+
+type Webhook {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """Where to send the data payload"""
+  webhookUrl: String!
+
+  """
+  The API key for the organization to connect to Bento's segment integration
+  """
+  eventType: EventHookTypeEnum!
+
+  """Used to verify Bento with the recipient"""
+  secretKey: String
+  state: WebhookStateTypeEnum!
+  webhookType: WebhookTypeTypeEnum!
+
+  """The organization that the webhook belongs to"""
+  organization: Organization!
+}
+
+"""Type of event to listen for"""
+enum EventHookTypeEnum {
+  ping
+  all
+  guideViewed
+  stepViewed
+  guideCompleted
+  stepCompleted
+}
+
+""""""
+enum WebhookStateTypeEnum {
+  active
+  inactive
+}
+
+""""""
+enum WebhookTypeTypeEnum {
+  standard
+}
+
+type SegmentApiKey {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """
+  The API key for the organization to connect to Bento's segment integration
+  """
+  key: String!
+  type: BentoApiKeyTypeEnum
+
+  """The time of first successful integration"""
+  integratedAt: DateTime
+
+  """The organization that the Segment API key belongs to"""
+  organization: Organization!
+}
+
+"""What integration this key is for"""
+enum BentoApiKeyTypeEnum {
+  api
+}
+
+type IntegrationApiKey {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The API key for the organization to connect to the integration"""
+  key: String!
+  type: IntegrationTypeEnum
+
+  """The time of first successful integration"""
+  integratedAt: DateTime
+
+  """For scheduled integrations, last time it ran automatically"""
+  lastRunAt: DateTime
+  state: IntegrationStateEnum!
+  twoWayState: TwoWayState @deprecated(reason: "We should no longer store two states in one key")
+  zendeskState: ZendeskState
+  issueSubmission: Boolean
+  kbSearch: Boolean
+
+  """
+  If this particular integration specifically should be targeted to certain segments
+  """
+  targeting: TargetsType! @deprecated(reason: "Not in use, to potentially be revisited later.")
+
+  """The organization that the Segment API key belongs to"""
+  organization: Organization!
+}
+
+"""What integration this key is for"""
+enum IntegrationTypeEnum {
+  zendesk
+}
+
+""""""
+enum IntegrationStateEnum {
+  active
+  inactive
+}
+
+type TwoWayState {
+  upState: IntegrationStateEnum
+  downState: IntegrationStateEnum
+}
+
+type ZendeskState {
+  username: String
+  subdomain: String
+  liveChat: Boolean @deprecated(reason: "Use orgSettings.helpCenter instead")
+  issueSubmission: Boolean @deprecated(reason: "Use orgSettings.helpCenter instead")
+  kbSearch: Boolean @deprecated(reason: "Use orgSettings.helpCenter instead")
+}
+
+"""Determines targeting criteria"""
+type TargetsType {
+  account: TargetType!
+  accountUser: TargetType!
+  audiences: TargetType
+}
+
+"""Determines a given target criteria"""
+type TargetType {
+  type: TargetTypeEnumType!
+  groups: [TargetGroupType!]
+}
+
+""""""
+enum TargetTypeEnumType {
+  all
+  role
+  attribute_rules
+}
+
+"""A single group of targeting rules"""
+type TargetGroupType {
+  rules: [TargetRuleType!]!
+}
+
+"""Determines the audience targeting criteria"""
+type TargetRuleType {
+  attribute: String!
+  ruleType: TargetRuleTypeEnumType!
+  valueType: AttributeValueTypeEnumType!
+  value: TargetValueScalarType!
+}
+
+""""""
+enum TargetRuleTypeEnumType {
+  lt
+  lte
+  eq
+  ne
+  gte
+  gt
+  empty
+  notEmpty
+  all
+  any
+  only
+  none
+  re
+  rmt
+  rlt
+  c
+  nc
+}
+
+""""""
+enum AttributeValueTypeEnumType {
+  number
+  text
+  boolean
+  date
+  template
+  stringArray
+  branchingPath
+  audience
+}
+
+"""
+Represent all possible values of a target rule (number, string, boolean, date, null or undefined)
+"""
+scalar TargetValueScalarType
+
+"""A guide base from which guide instances can be created"""
+type GuideBase {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the guide base"""
+  name: String
+  type: GuideTypeEnumType!
+
+  """When the guide base was activated/launched"""
+  activatedAt: DateTime
+
+  """A description of the guide base"""
+  description: String
+
+  """The account associated with the guide base"""
+  account: Account!
+
+  """The current activeness state of the guide base"""
+  state: GuideBaseState!
+
+  """The guide modules that belongs to the guide"""
+  guideModuleBases: [GuideModuleBase!]!
+
+  """The guides created from the guide base"""
+  guides: [Guide!]!
+
+  """
+  The account-based onboarding guide created if the guide base is an "account" type
+  """
+  accountGuide: Guide
+
+  """The account users who have been assigned to a guide in the guide base"""
+  participants: [AccountUser!]!
+
+  """The account users active in this guide who have ALSO viewed the guide"""
+  participantsWhoViewed: [AccountUser!]! @deprecated(reason: "Same as usersViewedAStep")
+
+  """The account users active in this guide"""
+  participantsCount: Int!
+
+  """
+  The count of participants in all instances of the guide base who have viewed the guide
+  """
+  participantsWhoViewedCount: Int!
+  stepsCompletedCount: Int!
+
+  """Users who have viewed a step within this guide base"""
+  usersViewedAStep: [AccountUser!]!
+
+  """Users who have completed a step within this guide base"""
+  usersCompletedAStep: [AccountUser!]!
+  usersCompletedAStepCount: Int!
+
+  """
+  CTA clicked information for announcement type guide bases, if available
+  """
+  ctasClicked: Int @deprecated(reason: "Use usersClickedCta instead")
+
+  """Distinct users that clicked a CTA"""
+  usersClickedCta: Int
+
+  """The entity ID of the template from which this guide base was created"""
+  createdFromTemplate: Template
+
+  """Wether the guide-base content was directly modified"""
+  isModifiedFromTemplate: Boolean!
+
+  """
+  The last completed step in any of the guides created from this guide base
+  """
+  lastCompletedStep: Step
+
+  """The average completion percentage across all instances of this guide"""
+  averageCompletionPercentage: Float!
+  averageStepsViewed: Int!
+  averageStepsCompleted: Int!
+
+  """The file uploads uploaded as part of this GuideBase"""
+  fileUploads: [FileUpload!]! @deprecated(reason: "Scheduled to be removed")
+
+  """Does this guide base have any file uploads associated with it"""
+  hasFileUploads: Boolean! @deprecated(reason: "Scheduled to be removed")
+
+  """Whether the guide was auto-launched"""
+  wasAutoLaunched: Boolean!
+
+  """The last time the guide base was active by a user"""
+  lastActiveAt: DateTime
+
+  """Whether this guide is a side quest or a main quest."""
+  isSideQuest: Boolean
+
+  """The type of page targeting mechanism"""
+  pageTargetingType: GuidePageTargetingEnumType!
+
+  """The URL for side quests page targeting, if enabled"""
+  pageTargetingUrl: String
+
+  """The design type of the guide"""
+  designType: GuideDesignTypeEnumType!
+
+  """The form factor this guide is meant to display as."""
+  formFactor: GuideFormFactorEnumType
+
+  """Style properties for this guides form factor"""
+  formFactorStyle: FormFactorStyle
+
+  """The theme for this guide-base"""
+  theme: ThemeType!
+
+  """
+  When this guide base was made obsolete due to targeting no longer matching
+  """
+  obsoletedAt: DateTime
+
+  """
+  Whether this guide is CYOA (single step guide that branches to another guide)
+  """
+  isCyoa: Boolean!
+
+  """Whether or not active split tests are targeting this template"""
+  isTargetedForSplitTesting: SplitTestStateEnumType!
+}
+
+"""The scope of the created guide template"""
+enum GuideTypeEnumType {
+  account
+  template
+  user
+  split_test
+}
+
+"""The current activeness state of the guide"""
+enum GuideBaseState {
+  draft
+  active
+  inactive
+  paused
+  obsoleted
+  archived
+}
+
+"""A module that exists within a guide base"""
+type GuideModuleBase {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the guide module base"""
+  name: String!
+  hasBranchingStep: Boolean
+  hasInputStep: Boolean
+
+  """The index of the guide module within the guide"""
+  orderIndex: Int!
+
+  """The step bases belong to this guide module base"""
+  guideStepBases: [GuideStepBase!]!
+
+  """
+  The account users who have been assigned to a guide module in the guide module base
+  """
+  participants: [AccountUser!]!
+
+  """
+  The count of account users who have been assigned to a guide module in the guide module base
+  """
+  participantsCount: Int!
+
+  """
+  The account users active in this guide module who have ALSO viewed the guide module
+  """
+  participantsWhoViewed: [AccountUser!]!
+
+  """
+  The count of participants in all instances of the guide module base who have viewed the guide module
+  """
+  participantsWhoViewedCount: Int!
+
+  """When was the guide module base dynamically added"""
+  addedDynamicallyAt: DateTime
+
+  """
+  Whether the guide module base should be added to a guide dynamically or not
+  """
+  shouldOnlyAddToNewGuidesDynamically: Boolean!
+
+  """The step that dynamically added this guide module base"""
+  dynamicallyAddedByStep: Step
+
+  """The module from which this guide module was created"""
+  createdFromModule: Module
+}
+
+"""A step that exists within a guide base"""
+type GuideStepBase {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the step"""
+  name: String!
+
+  """The descriptive text of the step"""
+  body: String
+
+  """The Slate.JS RTE representation of the Step body"""
+  bodySlate: JSON
+
+  """Whether or not step is required, optional, fyi, etc..."""
+  stepType: StepTypeEnum!
+  orderIndex: Int!
+  updatedAt: DateTime!
+
+  """Can the step be completed via auto completion"""
+  isAutoCompletable: Boolean!
+
+  """The media references associated to this step."""
+  mediaReferences: [MediaReference!]!
+
+  """The step prototype that this guide step base comes from"""
+  createdFromStepPrototype: StepPrototype
+
+  """The step instances that were created from this guide step base"""
+  steps: [Step!]! @deprecated(reason: "Should not be used due to performance concerns. Is likely to be removed.")
+
+  """The number of account users who have viewed this guide step base"""
+  countUsersViewed: Int!
+
+  """A list of account users who completed this guide step base"""
+  usersCompleted: [AccountUser!]!
+
+  """A list of account users who viewed this guide step base"""
+  usersViewed: [AccountUser!]!
+
+  """The percentage of users who have completed the guide step base"""
+  percentageCompleted: Float!
+
+  """
+  Files that have been uploaded in steps created from this guide step base
+  """
+  fileUploads: [FileUpload!]!
+
+  """Does the guide step base have any file uploads"""
+  hasFileUploads: Boolean!
+  taggedElements: [GuideBaseStepTaggedElement!]!
+  dismissLabel: String
+
+  """The CTAs of a step"""
+  ctas: [GuideBaseStepCta!]!
+  branchingQuestion: String
+  branchingMultiple: Boolean
+  branchingDismissDisabled: Boolean
+  branchingKey: String
+  branchingChoices: [BranchingChoice!]
+  branchingFormFactor: BranchingFormFactorEnumType
+  branchingPaths: [BranchingPath!]
+
+  """The auto complete interaction of a step"""
+  autoCompleteInteraction: GuideBaseStepAutoCompleteInteraction
+
+  """The input prototypes of a step"""
+  inputs: [InputStepBase!]!
+
+  """Wether an auto complete step can be manually completed."""
+  manualCompletionDisabled: Boolean!
+}
+
+"""What kind of step this is. e.g. required, optional"""
+enum StepTypeEnum {
+  required
+  optional
+  fyi
+  branching
+  branching_optional
+  input
+}
+
+type MediaReference {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  mediaId: Int!
+  referenceId: Int!
+  referenceType: MediaReferenceTypeEnumType!
+  orderIndex: Int!
+  settings: MediaReferenceSettingsType!
+
+  """The media associated to this record."""
+  media: Media!
+}
+
+"""The type of a media reference"""
+enum MediaReferenceTypeEnumType {
+  step_prototype
+}
+
+"""The media reference settings"""
+union MediaReferenceSettingsType = NumberAttributeMediaReferenceSettings | ImageMediaReferenceSettings | VideoMediaReferenceSettings
+
+type NumberAttributeMediaReferenceSettings {
+  _: Boolean
+}
+
+type ImageMediaReferenceSettings {
+  alignment: String
+  fill: String
+  hyperlink: String
+  lightboxDisabled: Boolean
+}
+
+type VideoMediaReferenceSettings {
+  alignment: String
+  playsInline: Boolean
+}
+
+type Media {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  type: MediaTypeEnumType!
+  url: String!
+  meta: MediaMetaType!
+}
+
+"""The type of a media element"""
+enum MediaTypeEnumType {
+  image
+  video
+  number_attribute
+}
+
+"""The media reference settings"""
+union MediaMetaType = NumberAttributeMediaMeta | ImageMediaMeta | VideoMediaMeta
+
+type NumberAttributeMediaMeta {
+  _: Boolean
+}
+
+type ImageMediaMeta {
+  naturalWidth: Int
+  naturalHeight: Int
+}
+
+type VideoMediaMeta {
+  videoId: String
+  videoType: String
+}
+
+"""A prototype of a step that can be added to an account guide"""
+type StepPrototype {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the step prototype"""
+  name: String!
+
+  """The descriptive text of the step prototype"""
+  body: String
+
+  """Whether or not step is required, optional, fyi, etc..."""
+  stepType: StepTypeEnum!
+
+  """The Slate.JS RTE representation of the Step prototype body"""
+  bodySlate: JSON
+  inputType: String
+
+  """Can the step be completed via auto completion"""
+  isAutoCompletable: Boolean!
+
+  """Events or attributes that can auto-complete the step"""
+  eventMappings: [StepEventMapping!]! @deprecated(reason: "should be migrated over to `autoCompleteInteractions`")
+
+  """The module in which this stepPrototype exists"""
+  module: Module
+
+  """Templates this step prototype is part of"""
+  templates: [Template]!
+
+  """
+  Page elements selected to which to attach a context tag when this step is available
+  """
+  taggedElements(
+    """
+    Filter to include only tagged elements belonging to a specified template
+    """
+    templateEntityId: EntityId
+  ): [StepPrototypeTaggedElement!]!
+  dismissLabel: String
+
+  """The CTAs of a step"""
+  ctas: [StepPrototypeCta!]!
+  branchingQuestion: String
+  branchingMultiple: Boolean
+  branchingDismissDisabled: Boolean
+  branchingKey: String
+
+  """The media references associated to this step."""
+  mediaReferences: [MediaReference!]!
+  branchingChoices: [BranchingChoice!]
+  branchingFormFactor: BranchingFormFactorEnumType
+  branchingEntityType: BranchingEntityTypeEnum
+  branchingPaths: [BranchingPath!]
+  branchingPerformance(
+    """Filter to include only stats from specified template"""
+    templateEntityId: EntityId
+  ): [StepBranchingPerformanceType!]
+
+  """The auto complete interaction of a step"""
+  autoCompleteInteraction: StepPrototypeAutoCompleteInteraction @deprecated(reason: "should be migrated over to `autoCompleteInteractions`")
+
+  """Auto-complete interactions of a Step"""
+  autoCompleteInteractions: [AutoCompleteInteraction]
+
+  """Counts of steps and steps completed"""
+  stepCompletionStats(
+    """Filter to include only stats from specified template"""
+    templateEntityId: EntityId
+  ): StepCompletionStatsType!
+
+  """The input prototypes of a step"""
+  inputs: [InputStepPrototype!]!
+
+  """Wether an auto complete step can be manually completed."""
+  manualCompletionDisabled: Boolean!
+  snappyAt: DateTime
+}
+
+"""A mapping of an event to an auto-completion of a step prototype"""
+type StepEventMapping {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  eventName: String!
+  stepPrototype: StepPrototype!
+  completeForWholeAccount: Boolean!
+  rules: [StepEventMappingRule!]!
+}
+
+"""A prototype of a step that can be added to an account guide"""
+type StepEventMappingRule {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  propertyName: String!
+  stepEventMappingRule: StepEventMapping!
+  valueType: StepEventMappingRuleValueType!
+  ruleType: StepEventMappingRuleRuleType!
+  numberValue: Int
+  textValue: String
+  booleanValue: Boolean
+  dateValue: DateTime
+}
+
+enum StepEventMappingRuleValueType {
+  boolean
+  text
+  number
+  date
+}
+
+enum StepEventMappingRuleRuleType {
+  lt
+  lte
+  eq
+  gte
+  gt
+}
+
+"""A standalone module of steps"""
+type Module {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  updatedAt: DateTime
+
+  """The name of the module"""
+  name: String
+
+  """The title displayed in the guides created from the module."""
+  displayTitle: String @deprecated(reason: "Use `name` instead")
+
+  """The description of the module"""
+  description: String
+
+  """The templates in which this module is being used"""
+  templates: [Template!]!
+
+  """The templates in which this module is added to dynamically"""
+  dynamicTemplates: [Template!]!
+
+  """Whether this step group is CYOA"""
+  isCyoa: Boolean
+  hasBranchingStep: Boolean
+  hasInputStep: Boolean
+
+  """The step prototypes included as part of this module"""
+  stepPrototypes: [StepPrototype!]!
+
+  """
+  The number of accounts with unmodified guides created from this template
+  """
+  numberOfAccountsWithUnmodifiedGuides: Int!
+  lastEdited: TemplateLastEdited
+
+  """When was the module was last used"""
+  lastUsedAt: DateTime
+
+  """Number of pending propagation jobs as a result of saving"""
+  propagationQueue: Int!
+
+  """How many guides this will eventually touch"""
+  propagationCount: Int!
+
+  """If this module is appended dynamically to anything"""
+  isDynamic: Boolean
+
+  """Rules for dynamic module targeting"""
+  targetingData: [ModuleTargetingData!]!
+
+  """Indicates whether the module is empty based on step body content"""
+  isEmpty: Boolean!
+}
+
+type Template {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """Means the public name"""
+  name: String
+
+  """Means the public name, previously meant the private name"""
+  displayTitle: String @deprecated(reason: "Use `name` instead")
+
+  """Means the private name"""
+  privateName: String
+
+  """The description of the template"""
+  description: String
+
+  """Indicates if auto-launch is enabled for the template."""
+  isAutoLaunchEnabled: Boolean
+
+  """The timestamp at which auto-launch will be enabled"""
+  enableAutoLaunchAt: DateTime
+
+  """The timestamp at which auto-launch will be disabled"""
+  disableAutoLaunchAt: DateTime
+
+  """The type of page targeting mechanism"""
+  pageTargetingType: GuidePageTargetingEnumType!
+
+  """The URL for side quests page targeting, if enabled"""
+  pageTargetingUrl: String
+  updatedAt: DateTime
+
+  """
+  The timestamp at which the template was last edited, or otherwise falls back to the timestamp at which the template was created if it has not yet been edited.
+  """
+  editedAt: DateTime
+
+  """The user that last edited the template"""
+  editedBy: User
+
+  """
+  Whether this guide is CYOA (single step guide that branches to another guide)
+  """
+  isCyoa: Boolean!
+
+  """When was the template last used"""
+  lastUsedAt: DateTime
+
+  """
+  Automatically create and launch for this template when a new account is created?
+  """
+  autoLaunchForAccountsCreatedAfter: DateTime
+
+  """Indicate this template will not show for users and is effectively gone"""
+  archivedAt: DateTime
+
+  """Criteria based on which to expire guides"""
+  expireBasedOn: GuideExpirationCriteria!
+
+  """After how many days the guide should expire"""
+  expireAfter: Int
+
+  """The accounts that are using this template"""
+  accounts: [Account!]!
+
+  """Guide bases launched from this template"""
+  guideBases: [GuideBase!]!
+
+  """The modules that comprise this template"""
+  modules: [Module!]!
+
+  """Dynamic modules that target and can be appended to this template"""
+  dynamicModules: [Module!]!
+
+  """Step groups that can be branched to in this template"""
+  branchingModules: [Module!]!
+  organization: Organization
+
+  """
+  Whether this template will create an account-specific guide or a user-specific guide
+  """
+  type: GuideTypeEnumType!
+
+  """
+  Ranking that indicates the order for auto-launchable templates. Higher rankings go first.
+  """
+  priorityRanking: Int!
+
+  """
+  The number of accounts with unmodified guides created from this template
+  """
+  numberOfAccountsWithUnmodifiedGuides: Int!
+
+  """The state of the template based on guide-bases created from it."""
+  state: TemplateState!
+
+  """The state of the split test, if this template is of type split test."""
+  splitTestState: SplitTestStateEnumType!
+  stepPrototypes: [StepPrototype]!
+
+  """Number of customers using this template"""
+  participantCount: Int
+
+  """The usage of the template in guide base and guide count"""
+  usage: TemplateUsage
+
+  """The account and account user targeting rules for this template"""
+  targets: TargetsType
+
+  """
+  The embed type (e.g. inline or sidebar) guides created from this template should be restricted to, if any.
+  """
+  allowedEmbedType: GuideAllowedEmbedTypeEnumType @deprecated(reason: "use formFactor")
+
+  """If it is an unlaunchable template"""
+  isTemplate: Boolean!
+
+  """Whether this guide is a side quest or a main quest."""
+  isSideQuest: Boolean
+
+  """The form factor this guide is meant to display as."""
+  formFactor: GuideFormFactorEnumType
+
+  """Style properties for this guides form factor"""
+  formFactorStyle: FormFactorStyle
+
+  """The design type of the guide"""
+  designType: GuideDesignTypeEnumType!
+  notificationSettings: TemplateNotificationSettings
+
+  """Whether a CYOA template has incomplete paths or not."""
+  hasIncompleteCYOAPaths: Boolean! @deprecated(reason: "CYOA paths are branching v1 and deprecated")
+
+  """
+  Whether a warning should be shown for an everboarding template with unpublished tags.
+  """
+  warnUnpublishedTag: Boolean!
+
+  """
+  The visual tags attached only to the template and not to any steps in the template
+  """
+  taggedElements(
+    """Whether to include the first step tag, if the guide supports it."""
+    checkFirstStepSupport: Boolean
+  ): [StepPrototypeTaggedElement!]!
+
+  """Template usage/completion stats"""
+  stats(useLocked: Boolean): TemplateStats
+  announcementActivity: [AnnouncementTimeSeriesPoint]!
+
+  """The theme for this template"""
+  theme: ThemeType!
+
+  """The number of account users that match auto launch rules"""
+  autoLaunchAudienceCount: Int!
+  launchedAt: DateTime
+
+  """
+  When/if targeting has been set by the user manually, or by manual launching
+  """
+  targetingSet: DateTime
+  stoppedAt: DateTime
+
+  """Number of pending propagation jobs as a result of saving"""
+  propagationQueue: Int!
+
+  """The number of guides this template will propagate to"""
+  propagationCount: Int!
+
+  """What (wildcard) URLs might the user be exposed to the guide"""
+  locationShown: String
+
+  """If onboarding, the inline embed where it will show up"""
+  inlineOnboarding: OrganizationInlineEmbed
+
+  """The inline embed where this guide should be shown"""
+  inlineEmbed(force: Boolean @deprecated(reason: "Not in use")): OrganizationInlineEmbed
+  stepsCount: Int!
+  inputStepAnswersCount: Int! @deprecated(reason: "Use template stats to share caching mechanics")
+  inputsCount: Int!
+
+  """Templates that this split test template leads to"""
+  splitTargets: [Template]!
+
+  """Templates that this split test template leads to"""
+  splitSources: [Template]!
+
+  """Whether or not active split tests are targeting this template"""
+  isTargetedForSplitTesting: SplitTestStateEnumType!
+
+  """
+  List of step groups dynamically added by branching, and how many users selected them
+  """
+  branchingPerformance(detachedOnly: Boolean): [BranchingPerformance!]!
+
+  """
+  Represents number of accounts/users that have selected a branching path
+  """
+  branchedGuidesCount: Int!
+
+  """Indicates whether the template is empty based on step body content"""
+  isEmpty: Boolean!
+
+  """Indicates whether the template has one or more guide bases"""
+  hasGuideBases: Boolean!
+
+  """
+  Indicates whether the template has one or more guide bases that have been auto-launched
+  """
+  hasAutoLaunchedGuideBases: Boolean!
+
+  """The accounts to which this template has been manually launched"""
+  manuallyLaunchedAccounts: [Account]!
+
+  """Templates that launch this one, e.g. with branching or CTA destination"""
+  launchedBy: [Template]!
+}
+
+"""The type of page targeting mechanism"""
+enum GuidePageTargetingEnumType {
+  any_page
+  specific_page
+  visual_tag
+  inline
+}
+
+"""Criteria based on which to expire guides"""
+enum GuideExpirationCriteria {
+  never
+  step_completion
+  launch
+}
+
+"""The current state of the template"""
+enum TemplateState {
+  draft
+  live
+  stopped
+  removed
+}
+
+""""""
+enum SplitTestStateEnumType {
+  draft
+  live
+  stopped
+  none
+  deleted
+}
+
+type TemplateUsage {
+  """Number of guide bases auto launched"""
+  autoLaunchedAccounts: Int!
+
+  """Number of guides auto launched"""
+  autoLaunchedUsers: Int!
+
+  """Number of guide bases manual launched"""
+  manualLaunchedAccounts: Int!
+
+  """Number of guides manual launched"""
+  manualLaunchedUsers: Int!
+}
+
+"""
+The embed type (e.g. inline or sidebar) the guide should be restricted to, if any.
+"""
+enum GuideAllowedEmbedTypeEnumType {
+  inline
+  sidebar
+}
+
+"""The form factor this guide is meant to display as."""
+enum GuideFormFactorEnumType {
+  inline_sidebar
+  inline
+  sidebar
+  modal
+  banner
+  tooltip
+  flow
+}
+
+union FormFactorStyle = BannerStyle | ModalStyle | TooltipStyle | ChecklistStyle | CardStyle | CarouselStyle | VideoGalleryStyle
+
+type BannerStyle {
+  bannerType: BannerType!
+  bannerPosition: BannerPosition!
+  backgroundColor: String
+  textColor: String
+  canDismiss: Boolean
+  ctasOrientation: CtasOrientation
+}
+
+""""""
+enum BannerType {
+  inline
+  floating
+}
+
+""""""
+enum BannerPosition {
+  top
+  bottom
+}
+
+""""""
+enum CtasOrientation {
+  left
+  right
+  spaceBetween
+  inline
+}
+
+type ModalStyle {
+  modalSize: ModalSize!
+  position: ModalPosition!
+  hasBackgroundOverlay: Boolean!
+  canDismiss: Boolean
+  backgroundColor: String
+  textColor: String
+  mediaFontSize: Int
+  mediaTextColor: String
+  ctasOrientation: CtasOrientation
+  stepBodyOrientation: StepBodyOrientation
+  mediaOrientation: MediaOrientation
+  verticalMediaOrientation: VerticalMediaOrientation
+  verticalMediaAlignment: VerticalMediaAlignment
+  horizontalMediaAlignment: HorizontalMediaAlignment
+  height: Int
+  imageWidth: String
+}
+
+""""""
+enum ModalSize {
+  large
+  medium
+  small
+}
+
+""""""
+enum ModalPosition {
+  center
+  top_left
+  top_right
+  bottom_left
+  bottom_right
+}
+
+""""""
+enum StepBodyOrientation {
+  vertical
+  horizontal
+}
+
+""""""
+enum MediaOrientation {
+  left
+  right
+}
+
+""""""
+enum VerticalMediaOrientation {
+  top
+  bottom
+}
+
+""""""
+enum VerticalMediaAlignment {
+  top
+  bottom
+  center
+}
+
+""""""
+enum HorizontalMediaAlignment {
+  left
+  center
+  right
+}
+
+type TooltipStyle {
+  backgroundColor: String
+  backgroundOverlayColor: String
+  backgroundOverlayOpacity: Int
+  hasArrow: Boolean!
+  hasBackgroundOverlay: Boolean!
+  textColor: String
+  mediaFontSize: Int
+  mediaTextColor: String
+  tooltipShowOn: TooltipShowOn!
+  tooltipSize: TooltipSize!
+  canDismiss: Boolean
+  ctasOrientation: CtasOrientation
+  stepBodyOrientation: StepBodyOrientation
+  mediaOrientation: MediaOrientation
+  verticalMediaOrientation: VerticalMediaOrientation
+  verticalMediaAlignment: VerticalMediaAlignment
+  horizontalMediaAlignment: HorizontalMediaAlignment
+  height: Int
+  imageWidth: String
+}
+
+""""""
+enum TooltipShowOn {
+  page_load
+  tag_hover
+}
+
+""""""
+enum TooltipSize {
+  large
+  medium
+  small
+}
+
+type ChecklistStyle {
+  ctasOrientation: CtasOrientation
+  hideStepGroupTitle: Boolean
+  hideCompletedSteps: Boolean
+  stepBodyOrientation: StepBodyOrientation
+  mediaOrientation: MediaOrientation
+  verticalMediaOrientation: VerticalMediaOrientation
+  verticalMediaAlignment: VerticalMediaAlignment
+  horizontalMediaAlignment: HorizontalMediaAlignment
+  height: Int
+  imageWidth: String
+}
+
+type CardStyle {
+  ctasOrientation: CtasOrientation
+  backgroundColor: String
+  textColor: String
+  mediaFontSize: Int
+  mediaTextColor: String
+  canDismiss: Boolean
+  borderColor: String
+  borderRadius: Int
+  padding: Int
+  advancedPadding: String
+  stepBodyOrientation: StepBodyOrientation
+  mediaOrientation: MediaOrientation
+  verticalMediaOrientation: VerticalMediaOrientation
+  verticalMediaAlignment: VerticalMediaAlignment
+  horizontalMediaAlignment: HorizontalMediaAlignment
+  height: Int
+  imageWidth: String
+}
+
+type CarouselStyle {
+  ctasOrientation: CtasOrientation
+  dotsColor: String
+  backgroundColor: String
+  textColor: String
+  mediaFontSize: Int
+  mediaTextColor: String
+  canDismiss: Boolean
+  borderColor: String
+  borderRadius: Int
+  padding: Int
+  advancedPadding: String
+  stepBodyOrientation: StepBodyOrientation
+  mediaOrientation: MediaOrientation
+  verticalMediaOrientation: VerticalMediaOrientation
+  verticalMediaAlignment: VerticalMediaAlignment
+  horizontalMediaAlignment: HorizontalMediaAlignment
+  height: Int
+  imageWidth: String
+}
+
+type VideoGalleryStyle {
+  selectedBackgroundColor: String
+  statusLabelColor: String
+  backgroundColor: String
+  textColor: String
+  mediaFontSize: Int
+  mediaTextColor: String
+  canDismiss: Boolean
+  borderColor: String
+  borderRadius: Int
+  padding: Int
+  advancedPadding: String
+}
+
+"""The design type of this guide."""
+enum GuideDesignTypeEnumType {
+  onboarding
+  announcement
+  everboarding
+}
+
+type TemplateNotificationSettings {
+  """Disable notifications entirely"""
+  disable: Boolean
+
+  """Disable notifying on branching steps"""
+  branching: Boolean
+
+  """Disable notifying on input steps"""
+  input: Boolean
+
+  """Disable notifying on action steps"""
+  action: Boolean
+
+  """Disable notifying on info steps"""
+  info: Boolean
+}
+
+type StepPrototypeTaggedElement {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  stepPrototype: StepPrototype
+  url: String!
+  wildcardUrl: String!
+  elementSelector: String!
+  elementText: String
+  elementHtml: String
+  type: ContextualTagTypeEnumType!
+  alignment: ContextualTagAlignmentEnumType!
+  xOffset: Int!
+  yOffset: Int!
+  relativeToText: Boolean!
+  style: VisualTagStyleSettings
+  tooltipAlignment: ContextualTagTooltipAlignmentEnumType!
+  template: Template!
+}
+
+"""The style of the context tag"""
+enum ContextualTagTypeEnumType {
+  dot
+  icon
+  badge
+  badge_dot
+  badge_icon
+  highlight
+}
+
+"""The position of the context tag relative to the tagged element"""
+enum ContextualTagAlignmentEnumType {
+  top_right
+  top_left
+  bottom_right
+  bottom_left
+  center_left
+  center_right
+}
+
+union VisualTagStyleSettings = VisualTagHighlightSettings
+
+type VisualTagHighlightSettings {
+  type: VisualTagHighlightType
+  pulse: Boolean
+  color: String
+  thickness: Int
+  padding: Int
+  radius: Int
+  opacity: Float
+  text: String
+}
+
+""""""
+enum VisualTagHighlightType {
+  solid
+  halo
+  none
+  overlay
+}
+
+"""The position of the context tag's tooltip relative to the tag"""
+enum ContextualTagTooltipAlignmentEnumType {
+  left
+  right
+  top
+  bottom
+}
+
+"""Template usage/completion stats"""
+type TemplateStats {
+  """Count of users that have seen a step in this guide"""
+  usersSeenGuide: Int
+
+  """Count of users that have completed a step in this guide"""
+  completedAStep: Int
+
+  """Raw number of steps that are complete"""
+  totalStepsCompleted: Int
+
+  """Out of all guides from this template, what percent are fully completed"""
+  percentCompleted: Float
+
+  """Count of users that dismissed an announcement (e.g. skipped step)"""
+  usersDismissed: Int
+
+  """Count of unique users that have clicked a CTA"""
+  usersClickedCta: Int
+
+  """Count of users that saved an announcement for later"""
+  usersSavedForLater: Int
+
+  """The number of guides with a registered view"""
+  guidesViewed: Int
+
+  """The number of guides with at least one step complete"""
+  guidesWithCompletedStep: Int
+
+  """
+  Same as percentCompleted but instead of total guides, it is out of total guides with a view
+  """
+  percentGuidesCompleted: Float
+
+  """Avarege number of steps completed in each guide"""
+  averageStepsCompleted: Float
+
+  """
+  Average steps completed but only counting those who have completed any steps
+  """
+  averageStepsCompletedForEngaged: Float
+
+  """Count of input answers submitted, not deduped by users"""
+  inputStepAnswersCount: Int
+
+  """The number of guide bases created from this template"""
+  accountsSeen: Int @deprecated(reason: "Use guidesViewed instead for number of accounts that have seen the guide")
+
+  """The number of times any CTAs in this guide were clicked."""
+  ctaClickCount: Int @deprecated(reason: "Use usersClickedCta instead")
+
+  """Count of unique users that have submitted an answer to input fields"""
+  usersAnswered: Int
+}
+
+"""Announcement activity data for one day, used with time series"""
+type AnnouncementTimeSeriesPoint {
+  date: Date!
+  dismissed: Int!
+  savedForLater: Int!
+  viewed: Int!
+  ctaActivity: [AnnouncementCtaActivity]!
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""Name and count of CTA activity"""
+type AnnouncementCtaActivity {
+  """Label of the CTA in question"""
+  text: String!
+  ctaEntityId: EntityId
+  count: Int!
+
+  """This can be null if the original CTA associated was changed or removed"""
+  cta: GuideBaseStepCta
+}
+
+type GuideBaseStepCta {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  step: GuideStepBase!
+  text: String!
+  url: String
+  type: StepCtaTypeEnumType!
+  style: StepCtaStyleEnumType!
+
+  """The settings of the step CTA"""
+  settings: StepCtaSettingsType
+  destinationGuide: String @deprecated(reason: "Use destinationGuideObj")
+  destinationGuideObj: Template
+
+  """Index that indicates the order for ctas."""
+  orderIndex: Int!
+
+  """The step prototype CTA that this CTA comes from"""
+  createdFromStepPrototypeCta: StepPrototypeCta
+}
+
+"""The type of the step CTA"""
+enum StepCtaTypeEnumType {
+  complete
+  skip
+  save
+  url
+  event
+  launch
+  url_complete
+  back
+  next
+}
+
+"""The style of the step CTA"""
+enum StepCtaStyleEnumType {
+  solid
+  outline
+  link
+}
+
+"""The step CTA settings"""
+type StepCtaSettingsType {
+  bgColorField: String!
+  textColorField: String!
+  eventName: String
+  markComplete: Boolean
+  implicit: Boolean
+  opensInNewTab: Boolean
+}
+
+type StepPrototypeCta {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  stepPrototype: StepPrototype!
+  text: String!
+  url: String
+  type: StepCtaTypeEnumType!
+  style: StepCtaStyleEnumType!
+
+  """The entity id of the guide this cta should launch, if any"""
+  destinationGuide: String @deprecated(reason: "Use destinationGuideObj")
+
+  """The guide this cta should launch, if any"""
+  destinationGuideObj: Template
+
+  """The settings of the step CTA"""
+  settings: StepCtaSettingsType
+
+  """Index that indicates the order for ctas."""
+  orderIndex: Int!
+}
+
+type OrganizationInlineEmbed {
+  entityId: EntityId!
+  url: String!
+  wildcardUrl: String!
+  elementSelector: String!
+  position: InlineEmbedPosition!
+  topMargin: Int!
+  rightMargin: Int!
+  bottomMargin: Int!
+  leftMargin: Int!
+  alignment: InlineEmbedAlignment
+  maxWidth: Int
+  padding: Int!
+  borderRadius: Int!
+  targeting: InlineEmbedTargeting!
+  state: InlineEmbedState!
+
+  """The template associated with this inline embed"""
+  template: Template
+}
+
+"""
+The position where the inline should be injected relative to the selected element
+"""
+enum InlineEmbedPosition {
+  inside
+  before
+  after
+}
+
+"""Alignment of the injected inline"""
+enum InlineEmbedAlignment {
+  center
+  left
+  right
+}
+
+"""Account and account user targeting for inline embeds"""
+type InlineEmbedTargeting {
+  account: InlineEmbedTargetingSegment!
+  accountUser: InlineEmbedTargetingSegment!
+}
+
+"""Inline embed targeting segment"""
+type InlineEmbedTargetingSegment {
+  type: InlineEmbedTargetingType!
+  rules: [InlineEmbedTargetingRule]
+  grouping: String
+}
+
+"""The rule type of rules for an inline embed"""
+enum InlineEmbedTargetingType {
+  all
+  role
+  attribute_rules
+}
+
+"""An inline embed targeting attribute rule"""
+type InlineEmbedTargetingRule {
+  attribute: String!
+  ruleType: TargetAttributeRuleRuleTypeEnumType!
+  valueType: AttributeValueType!
+  value: TargetAttributeRuleFields!
+}
+
+"""The launched state of the inline embed"""
+enum InlineEmbedState {
+  active
+  inactive
+}
+
+"""Branching performance by destination, for step group branching"""
+type BranchingPerformance {
+  branchingPath: BranchingPath
+
+  """Step group targeted by branching"""
+  createdModule: Module
+
+  """Guide targeted by branching"""
+  createdTemplate: Template
+  count: Int!
+}
+
+type BranchingPath {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  choiceKey: String
+  branchingKey: String
+  orderIndex: Int
+
+  """The type of action that is performed"""
+  actionType: BranchingPathActionType!
+
+  """The type of entity that is created by the action"""
+  entityType: BranchingPathEntityType!
+
+  """The entity id for the template associated with this branch"""
+  templateEntityId: EntityId
+
+  """
+  If the entityType is "template" or "guide", the template from which a guide is generated
+  """
+  template: Template
+
+  """The entity id for the template associated with this branch"""
+  moduleEntityId: EntityId
+
+  """
+  If the entityType is "module", the module that gets added onto the users guide
+  """
+  module: Module
+  triggeredCount: Int!
+}
+
+enum BranchingPathActionType {
+  create
+}
+
+enum BranchingPathEntityType {
+  guide
+  module
+  template @deprecated(reason: "Use \"guide\"")
+}
+
+"""Template last edited data"""
+type TemplateLastEdited {
+  timestamp: DateTime
+  user: User
+}
+
+type ModuleTargetingData {
+  """EntityId of the targeted template"""
+  targetTemplate: String!
+  autoLaunchRules: [ModuleAutoLaunchRule!]!
+}
+
+"""An autolaunch rule for a module"""
+type ModuleAutoLaunchRule {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """What type of rule is the auto launch rule"""
+  ruleType: ModuleRuleType!
+
+  """
+  The account user targeting rules, if the targetType is "attributeRules"
+  """
+  rules: [JSON!]!
+  module: Module!
+}
+
+""""""
+enum ModuleRuleType {
+  attribute_rules
+}
+
+type BranchingChoice {
+  choiceKey: String
+  label: String
+  selected: Boolean
+
+  """Branching style based on the branching form factor"""
+  style: BranchingStyle
+}
+
+union BranchingStyle = BranchingBaseStyle | BranchingCardStyle
+
+type BranchingBaseStyle {
+  formFactor: String
+}
+
+type BranchingCardStyle {
+  formFactor: String
+  backgroundImageUrl: String
+  backgroundImagePosition: CYOABackgroundImagePosition!
+}
+
+""""""
+enum CYOABackgroundImagePosition {
+  background
+  left
+  right
+  top
+  bottom
+}
+
+"""How branching will be displayed on the embeddable"""
+enum BranchingFormFactorEnumType {
+  dropdown
+  cards
+}
+
+"""Branching Entity Type"""
+enum BranchingEntityTypeEnum {
+  template
+  guide
+  module
+}
+
+type StepBranchingPerformanceType {
+  createdModule: Module
+
+  """Original branching path that triggered the branching"""
+  branchingPath: BranchingPath @deprecated(reason: "Not implemented")
+
+  """Any new branching path that would result in adding the targeted module"""
+  activeBranchingPath: BranchingPath
+  triggeredCount: Int
+  choiceText: String
+}
+
+type StepPrototypeAutoCompleteInteraction {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  stepPrototype: StepPrototype!
+  url: String!
+  wildcardUrl: String!
+  type: StepAutoCompleteInteractionTypeEnumType!
+  elementSelector: String!
+  elementText: String
+  elementHtml: String
+}
+
+"""The type of the step auto complete interaction"""
+enum StepAutoCompleteInteractionTypeEnumType {
+  click
+}
+
+union AutoCompleteInteraction = OnGuideCompletion
+
+type OnGuideCompletion {
+  interactionType: AutoCompleteInteractionType
+  templateEntityId: String!
+}
+
+""""""
+enum AutoCompleteInteractionType {
+  guide_completion
+}
+
+"""Number of steps associated with this sp, and how many are completed"""
+type StepCompletionStatsType {
+  stepsCompleted: Int
+  viewedSteps: Int
+  totalSteps: Int
+}
+
+"""An input prototype that belongs to a step prototype"""
+type InputStepPrototype {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The step prototype to which this input prototype belongs to"""
+  stepPrototype: StepPrototype!
+
+  """Label for the input"""
+  label: String!
+
+  """Type of the input"""
+  type: InputStepFieldTypeEnumType!
+
+  """Settings for the input according to its type"""
+  settings: InputSettings
+
+  """Index that indicates the order of the input"""
+  orderIndex: Int!
+}
+
+"""The type of the input prototype"""
+enum InputStepFieldTypeEnumType {
+  text
+  paragraph
+  email
+  nps
+  numberPoll
+  dropdown
+  date
+}
+
+union InputSettings = TextOrEmailSettings | NpsSettings | NumberPollSettings | DropdownSettings
+
+type TextOrEmailSettings {
+  required: Boolean!
+  helperText: String
+  placeholder: String
+  maxValue: Int
+}
+
+type NpsSettings {
+  required: Boolean!
+  helperText: String
+  minLabel: String @deprecated(reason: "Value is not editable")
+  minValue: Int @deprecated(reason: "Value is not editable")
+  maxLabel: String @deprecated(reason: "Value is not editable")
+  maxValue: Int @deprecated(reason: "Value is not editable")
+}
+
+type NumberPollSettings {
+  required: Boolean!
+  helperText: String
+  minLabel: String
+  minValue: Int
+  maxLabel: String
+  maxValue: Int
+}
+
+type DropdownSettings {
+  required: Boolean!
+  helperText: String
+  options: [DropdownInputOption!]!
+  multiSelect: Boolean!
+  variation: DropdownInputVariationEnumType!
+}
+
+type DropdownInputOption {
+  label: String
+  value: String
+}
+
+"""The variation for an input of type dropdown"""
+enum DropdownInputVariationEnumType {
+  dropdown
+  cards
+}
+
+"""A step that exists within a guide"""
+type Step {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the step"""
+  name: String!
+  guide: Guide
+
+  """The descriptive text of the step"""
+  body: String @deprecated(reason: "Maybe deprecate because it is not a case that exists anymore")
+
+  """The Slate.JS RTE representation of the Step body"""
+  bodySlate: JSON
+
+  """Whether the step has been marked as completed"""
+  isComplete: Boolean! @deprecated(reason: "Use 'completedAt'")
+  orderIndex: Int!
+  updatedAt: DateTime!
+
+  """Whether or not step is required, optional, fyi, etc..."""
+  stepType: StepTypeEnum!
+
+  """When was the step completed"""
+  completedAt: DateTime
+
+  """What kind of entity triggered the step completion"""
+  completedByType: StepCompletedBy
+  completedByUser: User
+  completedByAccountUser: AccountUser
+
+  """The step that comes after"""
+  nextStep: Step
+
+  """Can the step be completed via auto completion"""
+  isAutoCompletable: Boolean!
+
+  """The step prototype that this step comes from"""
+  createdFromStepPrototype: StepPrototype!
+
+  """The number of account users who have viewed this step"""
+  countUsersViewed: Int!
+
+  """A list of account users who viewed this step"""
+  usersViewed: [AccountUser!]!
+
+  """A list of account users who skipped this step"""
+  usersSkipped: [AccountUser!]!
+
+  """
+  Files that have been uploaded in steps created from this guide step base
+  """
+  fileUploads: [FileUpload!]!
+
+  """Does the guide step base have any file uploads"""
+  hasFileUploads: Boolean!
+  dismissLabel: String @deprecated(reason: "not being used, might be removed")
+
+  """The CTAs of a step"""
+  ctas: [GuideBaseStepCta!]!
+  branchingQuestion: String
+  branchingMultiple: Boolean
+  branchingDismissDisabled: Boolean
+  branchingKey: String
+  branchingChoices: [BranchingChoice!]
+  branchingFormFactor: BranchingFormFactorEnumType
+
+  """The auto complete interaction of a step"""
+  autoCompleteInteraction: StepAutoCompleteInteraction
+
+  """Wether an auto complete step can be manually completed."""
+  manualCompletionDisabled: Boolean!
+
+  """The media references associated to this step."""
+  mediaReferences: [MediaReference!]!
+}
+
+"""A guide used in an customer account journey"""
+type Guide {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  updatedAt: DateTime
+
+  """The name of the guide"""
+  name: String!
+  type: GuideTypeEnumType!
+
+  """A description of the guide"""
+  description: String
+
+  """The number of completed steps in the guide"""
+  completedStepsCount: Int!
+
+  """The number of completed steps in the guide"""
+  stepsCount: Int!
+
+  """The guide modules that belongs to the guide"""
+  guideModules: [GuideModule!]!
+
+  """The first incomplete step for this guide"""
+  firstIncompleteStep: EntityId
+
+  """The entity ID of the template from which this guide was created"""
+  createdFromTemplate: Template
+  createdFromGuideBase: GuideBase
+
+  """The current activeness state of the guide"""
+  state: GuideState!
+
+  """The completion state of the guide"""
+  completionState: GuideCompletionState
+  lastCompletedStep: Step
+
+  """The percentage of steps completed in this guide"""
+  completionPercentage: Int!
+
+  """The account to which the guide belongs"""
+  account: Account!
+
+  """The account users that are participating in this guide"""
+  participants: [AccountUser!]!
+
+  """The timestamp of the last activity made on the guide"""
+  lastActiveAt: DateTime
+
+  """The timestamp of when the guide was completed"""
+  completedAt: DateTime
+  allowedEmbedType: GuideAllowedEmbedTypeEnumType @deprecated(reason: "use formFactor")
+
+  """Whether this guide is a side quest or a main quest."""
+  isSideQuest: Boolean
+
+  """
+  Whether this guide is CYOA (single step guide that branches to another guide)
+  """
+  isCyoa: Boolean
+
+  """The type of page targeting mechanism"""
+  pageTargetingType: GuidePageTargetingEnumType!
+
+  """The URL for side quests page targeting, if enabled"""
+  pageTargetingUrl: String
+
+  """The form factor this guide is meant to display as."""
+  formFactor: GuideFormFactorEnumType
+
+  """Style properties for this guides form factor"""
+  formFactorStyle: FormFactorStyle
+
+  """The design type of the guide"""
+  designType: GuideDesignTypeEnumType!
+
+  """The theme for this guide"""
+  theme: ThemeType!
+}
+
+"""A module that exists within a guide"""
+type GuideModule {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the guide module"""
+  name: String! @deprecated(reason: "Use `name` from `GuideModuleBase` instead")
+
+  """The index of the guide module within the guide"""
+  orderIndex: Int!
+
+  """The steps belong to this guide module"""
+  steps: [Step!]!
+
+  """The module from which this guide module was created"""
+  createdFromModule: Module
+}
+
+"""The current activeness state of the guide"""
+enum GuideState {
+  draft
+  active
+  inactive
+  expired
+}
+
+"""The completion state of the guide"""
+enum GuideCompletionState {
+  incomplete
+  complete
+  done
+}
+
+type AccountUser {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  externalId: String
+  email: String
+  fullName: String
+  avatarUrl: String @deprecated(reason: "does not exist anymore, will be removed")
+
+  """The attributes associated with this account"""
+  attributes: JSON!
+
+  """The account for whom this user belongs"""
+  account: Account!
+  createdInOrganizationAt: DateTime
+
+  """The last guide the user interacted with"""
+  latestGuide: JSON
+}
+
+"""What kind of entity triggered the step completion"""
+enum StepCompletedBy {
+  accountUser
+  auto
+  user
+}
+
+"""A guide used in an customer account journey"""
+type FileUpload {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The name of the file"""
+  filename: String!
+
+  """The original filename of the file"""
+  originalFilename: String!
+
+  """The url of the file"""
+  url: String
+  createdAt: DateTime!
+
+  """The step in which this file was uploaded"""
+  step: Step!
+
+  """The account user that uploaded this file"""
+  accountUser: AccountUser
+
+  """The account users that are participating in this guide"""
+  participants: [AccountUser!]!
+}
+
+type StepAutoCompleteInteraction {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  step: GuideStepBase!
+  url: String!
+  wildcardUrl: String!
+  type: StepAutoCompleteInteractionTypeEnumType!
+  elementSelector: String!
+}
+
+type GuideBaseStepTaggedElement {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  url: String!
+  wildcardUrl: String!
+  elementSelector: String!
+  type: ContextualTagTypeEnumType!
+  style: VisualTagStyleSettings
+  alignment: ContextualTagAlignmentEnumType!
+  xOffset: Int!
+  yOffset: Int!
+  relativeToText: Boolean!
+  tooltipAlignment: ContextualTagTooltipAlignmentEnumType!
+}
+
+type GuideBaseStepAutoCompleteInteraction {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+  step: GuideStepBase!
+  url: String!
+  wildcardUrl: String!
+  type: StepAutoCompleteInteractionTypeEnumType!
+  elementSelector: String!
+}
+
+"""An input base that belongs to a guide step base"""
+type InputStepBase {
+  """The ID of an object"""
+  id: ID!
+  entityId: EntityId!
+
+  """The guide step base to which this input base belongs to"""
+  guideStepBase: GuideStepBase!
+
+  """Label for the input"""
+  label: String!
+
+  """Type of the input"""
+  type: InputStepFieldTypeEnumType!
+
+  """Settings for the input according to its type"""
+  settings: InputSettings
+
+  """Index that indicates the order of the input"""
+  orderIndex: Int!
+}
+
+type BranchingQuestion {
+  id: String!
+  question: String!
+  branchingKey: String!
+  choices: [BranchingQuestionChoice!]!
+}
+
+type BranchingQuestionChoice {
+  id: String!
+  choiceKey: String!
+  label: String!
+}
+
+type OrgDiagnostics {
+  """There is only one account, indicating possible hard-coding"""
+  hardCodedAccounts: DiagnosticStateEnum
+
+  """There is only one user, indicating possible hard-coding"""
+  hardCodedUsers: DiagnosticStateEnum
+
+  """Account users have recommended base attributes"""
+  hasRecommendedAttributes: DiagnosticStateEnum
+
+  """If we have received a ping from their snippet"""
+  successfulInitialization: DiagnosticStateEnum
+
+  """Account user ids do not look like hard-coded emails"""
+  validAccountUserIds: DiagnosticStateEnum
+
+  """Attributes change data type"""
+  inconsistentTypes: DiagnosticStateEnum
+
+  """Dates are passed in non-ISO format"""
+  nonIsoDates: DiagnosticStateEnum
+}
+
+"""Health status of a particular diagnostics category"""
+enum DiagnosticStateEnum {
+  healthy
+  warning
+  critical
+  noData
+}
+
+"""Level at which guide reset applies"""
+enum ResetLevelEnumType {
+  template
+  account
+  guide_base
+}
+
+input UpdateVisualBuilderSessionInput {
+  visualBuilderSessionEntityId: EntityId!
+  state: VisualBuilderSessionState
+  progressData: JSONObject
+  previewData: JSONObject
+}

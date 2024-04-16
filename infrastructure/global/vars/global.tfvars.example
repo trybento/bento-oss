@@ -1,0 +1,5 @@
+# See "variables.tf" for a description of all available variables
+
+region                = "us-east-1"
+ecr_repository_name   = "bento-oss"
+ssm_environment_names = ["staging", "production"]

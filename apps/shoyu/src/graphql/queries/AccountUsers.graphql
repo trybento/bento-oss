@@ -1,0 +1,12 @@
+query AccountUsers {
+  account {
+    id
+    ticketsEnabled
+    accountUsers {
+      id
+      entityId
+      fullName
+      email
+    }
+  }
+}

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:12.9-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bentodb
+
+  postgres-test:
+    image: postgres:12.9-alpine
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bentodb_test
+
+  redis:
+    image: redis:6.2
+    ports:
+      - 6379:6379
+
+  redis-bullmq:
+    image: redis:6.2
+    ports:
+      - 6380:6379
+
+volumes:
+  postgres-data:
+    driver: local

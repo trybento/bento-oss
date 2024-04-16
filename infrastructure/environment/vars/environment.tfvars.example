@@ -1,0 +1,36 @@
+# See "variables.tf" for a description of all available variables
+
+region                           = "us-east-1"
+environment_name                 = "production"
+database_user                    = ""
+database_password                = ""
+database_storage                 = 32
+database_max_storage             = 64
+database_storage_type            = "gp2"
+database_backup_retention_period = 7
+database_instance_class          = "db.t3.medium"
+database_multi_az_enabled        = true
+alb_certificate_arn              = ""
+redis_cache_instance_type        = "cache.t4g.micro"
+redis_cache_instance_count       = 2
+redis_workers_instance_type      = "cache.t4g.micro"
+redis_workers_instance_count     = 2
+udon_hostname                    = ""
+miso_hostname                    = ""
+bento_ecr_image_url              = ""
+udon_web_count                   = 1
+udon_web_cpu                     = 512
+udon_web_memory                  = 1024
+udon_worker_count                = 1
+udon_worker_cpu                  = 256
+udon_worker_memory               = 512
+udon_priority_worker_count       = 1
+udon_priority_worker_cpu         = 256
+udon_priority_worker_memory      = 512
+miso_count                       = 1
+miso_cpu                         = 256
+miso_memory                      = 512
+bastion_ami                      = "ami-007855ac798b5175e"
+bastion_instance_type            = "t3.micro"
+bastion_public_key               = ""
+s3_bucket_prefix                 = "bento"

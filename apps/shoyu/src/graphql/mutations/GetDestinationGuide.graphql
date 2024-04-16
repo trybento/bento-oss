@@ -1,0 +1,12 @@
+mutation GetDestinationGuideMutation($input: GetDestinationGuideInput!) {
+  getDestinationGuide(input: $input) {
+    # The below should match the "full" guide query
+    # to guarantee all the information needed when added to the store
+    guide {
+      ...GuideQuery_guide
+    }
+    stepAutoCompleteInteractions {
+      ...StepAutoCompleteInteractionsQuery_stepAutoCompleteInteraction
+    }
+  }
+}

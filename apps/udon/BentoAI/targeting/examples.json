@@ -1,0 +1,80 @@
+{
+  "account": {
+    "type": "attribute_rules",
+    "groups": [
+      {
+        "rules": [
+          {
+            "attribute": "createdAt",
+            "ruleType": "gt",
+            "valueType": "date",
+            "value": "2023-11-01T04:00:00.000Z"
+          },
+          {
+            "attribute": "hasAccountUsers",
+            "ruleType": "eq",
+            "valueType": "boolean",
+            "value": true
+          },
+          {
+            "attribute": "plan",
+            "ruleType": "eq",
+            "valueType": "text",
+            "value": "Starter"
+          }
+        ]
+      },
+      {
+        "rules": [
+          {
+            "attribute": "teamSize",
+            "ruleType": "eq",
+            "valueType": "number",
+            "value": 50
+          }
+        ]
+      },
+      {
+        "rules": [
+          {
+            "attribute": "trialDaysLeft",
+            "ruleType": "eq",
+            "valueType": "number",
+            "value": 30
+          }
+        ]
+      }
+    ]
+  },
+  "accountUser": {
+    "type": "attribute_rules",
+    "groups": [
+      {
+        "rules": [
+          {
+            "attribute": "email",
+            "ruleType": "eq",
+            "valueType": "text",
+            "value": "rae@blueweave.com"
+          },
+          {
+            "attribute": "NPS Score",
+            "ruleType": "eq",
+            "valueType": "number",
+            "value": 3
+          }
+        ]
+      },
+      {
+        "rules": [
+          {
+            "attribute": "hasChromeExtension",
+            "ruleType": "eq",
+            "valueType": "boolean",
+            "value": true
+          }
+        ]
+      }
+    ]
+  }
+}

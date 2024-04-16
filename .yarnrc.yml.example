@@ -1,0 +1,13 @@
+nodeLinker: node-modules
+
+plugins:
+  - path: .yarn/plugins/@yarnpkg/plugin-workspace-tools.cjs
+    spec: '@yarnpkg/plugin-workspace-tools'
+
+yarnPath: .yarn/releases/yarn-3.1.1.cjs
+
+npmScopes:
+  taskforcesh:
+    npmAlwaysAuth: true
+    npmAuthToken: <BULLMQ PRO TOKEN - RETRIEVE FROM TASKFORCE ACCOUNT>
+    npmRegistryServer: 'https://npm.taskforce.sh/'

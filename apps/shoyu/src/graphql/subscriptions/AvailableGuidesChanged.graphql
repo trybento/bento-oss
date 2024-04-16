@@ -1,0 +1,7 @@
+subscription AvailableGuidesChanged {
+  availableGuidesChanged {
+    guides {
+      ...GuideQuery_baseGuide
+    }
+  }
+}

@@ -1,0 +1,174 @@
+/* This variant is as designed, with a bounce-back loop. */
+
+@keyframes petal-anim-1 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes petal-anim-2 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  20% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes petal-anim-3 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  45% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes petal-anim-4 {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.bento-spinner .petals {
+  animation-direction: alternate !important;
+  -webkit-animation-direction: alternate !important;
+  animation-timing-function: cubic-bezier(0.2, 0.94, 0.79, 0.99);
+  -webkit-animation-timing-function: cubic-bezier(0, 0.91, 0.7, 1);
+  transform-origin: center;
+}
+
+.bento-spinner .frame {
+  animation: container 1.5s infinite;
+  animation-direction: alternate !important;
+  -webkit-animation-direction: alternate !important;
+  animation-timing-function: cubic-bezier(0, 0.91, 0.7, 1);
+  -webkit-animation-timing-function: cubic-bezier(0, 0.91, 0.7, 1);
+  transform-origin: center;
+}
+
+.bento-spinner .petal-1 {
+  animation: petal-anim-1 1.5s infinite;
+}
+
+.bento-spinner .petal-2 {
+  animation: petal-anim-2 1.5s infinite;
+}
+
+.bento-spinner .petal-3 {
+  animation: petal-anim-3 1.5s infinite;
+}
+
+.bento-spinner .petal-4 {
+  animation: petal-anim-4 1.5s infinite;
+}
+
+@keyframes container {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.6;
+    -webkit-transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+
+/* This variant just loops in a circular motion. */
+
+.bento-spinner-alternate .frame {
+  animation: container-alt 1s infinite alternate;
+  animation-timing-function: cubic-bezier(0.62, 0.95, 0.84, 1);
+  -webkit-animation-timing-function: cubic-bezier(0.68, -0.01, 0.35, 0.99);
+  transform-origin: center;
+}
+
+.bento-spinner-alternate .petals {
+  animation: petal-alt 2s infinite;
+  -webkit-animation: petal-alt 2s infinite;
+  animation-timing-function: cubic-bezier(0.68, -0.01, 0.35, 0.99);
+  -webkit-animation-timing-function: cubic-bezier(0.68, -0.01, 0.35, 0.99);
+  transform-origin: center;
+}
+
+.bento-spinner-alternate .petal-2 {
+  animation-delay: 0.5s;
+}
+
+.bento-spinner-alternate .petal-3 {
+  animation-delay: 1s;
+}
+
+.bento-spinner-alternate .petal-4 {
+  animation-delay: 1.5s;
+}
+
+@keyframes petal-alt {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.1;
+    -webkit-transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.1;
+    -webkit-transform: scale(0.85);
+  }
+}
+
+@keyframes container-alt {
+  0% {
+    transform: scale(0.99);
+    opacity: 0.8;
+    -webkit-transform: scale(0.99);
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}

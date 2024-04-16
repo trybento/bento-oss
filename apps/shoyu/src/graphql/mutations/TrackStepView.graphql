@@ -1,0 +1,5 @@
+mutation TrackStepViewMutation($input: TrackStepViewInput!) {
+  trackStepView(input: $input) {
+    errors
+  }
+}

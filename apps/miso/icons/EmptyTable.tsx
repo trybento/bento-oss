@@ -1,0 +1,227 @@
+import useRandomKey from 'bento-common/hooks/useRandomKey';
+
+export default function EmptyTable() {
+  /** Filter ids must be unique in order to work. */
+  const ranKey = useRandomKey();
+
+  return (
+    <svg
+      width="199"
+      height="135"
+      viewBox="0 0 199 135"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter={`url(#filter0${ranKey})`}>
+        <rect
+          x="7.35345"
+          y="7"
+          width="184.293"
+          height="120"
+          rx="5"
+          fill="#F7FAFC"
+        />
+      </g>
+      <rect
+        x="11.2845"
+        y="10.5172"
+        width="177.336"
+        height="112.25"
+        rx="2.5"
+        fill="white"
+        stroke="#E2E8F0"
+      />
+      <rect
+        x="10.7845"
+        y="33.4483"
+        width="178.336"
+        height="1.30172"
+        rx="0.650862"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="21.1983"
+        y="20.431"
+        width="31.2414"
+        height="5.2069"
+        rx="2.60345"
+        fill="#CBD5E0"
+      />
+      <rect
+        x="79.7759"
+        y="20.431"
+        width="16.9224"
+        height="5.2069"
+        rx="2.60345"
+        fill="#CBD5E0"
+      />
+      <rect
+        x="107.112"
+        y="20.431"
+        width="27.3362"
+        height="5.2069"
+        rx="2.60345"
+        fill="#CBD5E0"
+      />
+      <rect
+        x="146.164"
+        y="20.431"
+        width="16.9224"
+        height="5.2069"
+        rx="2.60345"
+        fill="#CBD5E0"
+      />
+      <rect
+        x="114.922"
+        y="43.8621"
+        width="13.0172"
+        height="13.0172"
+        rx="6.50862"
+        fill="#EFF5FF"
+      />
+      <rect
+        x="21.1983"
+        y="47.7672"
+        width="42.9569"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="21.1983"
+        y="73.8017"
+        width="42.9569"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="21.1983"
+        y="99.8362"
+        width="42.9569"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="79.7759"
+        y="47.7672"
+        width="13.0172"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="146.164"
+        y="47.7672"
+        width="27.3362"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="79.7759"
+        y="73.8017"
+        width="13.0172"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="146.164"
+        y="73.8017"
+        width="27.3362"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="79.7759"
+        y="101.138"
+        width="13.0172"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="146.164"
+        y="101.138"
+        width="27.3362"
+        height="5.2069"
+        rx="2.60345"
+        fill="#E2E8F0"
+      />
+      <rect
+        x="114.922"
+        y="69.8966"
+        width="13.0172"
+        height="13.0172"
+        rx="6.50862"
+        fill="#FDF6F6"
+      />
+      <rect
+        x="114.922"
+        y="95.931"
+        width="13.0172"
+        height="13.0172"
+        rx="6.50862"
+        fill="#FDF6F6"
+      />
+      <defs>
+        <filter
+          id={`filter0${ranKey}`}
+          x="0.353455"
+          y="0"
+          width="198.293"
+          height="135"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset />
+          <feGaussianBlur stdDeviation="3.5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_1_294"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="3" />
+          <feGaussianBlur stdDeviation="2.5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="effect1_dropShadow_1_294"
+            result="effect2_dropShadow_1_294"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect2_dropShadow_1_294"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}

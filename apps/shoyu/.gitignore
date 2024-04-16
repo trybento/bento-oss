@@ -1,0 +1,13 @@
+dist
+.DS_Store
+node_modules*
+example/.cache
+example/dist
+example/node_modules
+coverage
+*.log
+.cache
+build
+build-staging
+env/.env.*
+!env/.env.example

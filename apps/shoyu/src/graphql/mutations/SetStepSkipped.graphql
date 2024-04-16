@@ -1,0 +1,5 @@
+mutation SetStepSkippedMutation($input: SetStepSkippedInput!) {
+  setStepSkipped(input: $input) {
+    errors
+  }
+}

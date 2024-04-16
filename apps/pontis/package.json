@@ -1,0 +1,92 @@
+{
+  "name": "pontis",
+  "displayName": "Bento Everboarding",
+  "version": "0.0.17",
+  "description": "Allows you to use Bento’s visual editor to place experiences in your product without engineering.",
+  "author": "Bento App, Inc. <support@trybento.co>",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build --source-maps",
+    "test": "plasmo test",
+    "zip:dev": "sh ./scripts/zippy chrome-mv3-dev",
+    "zip:staging": "sh ./scripts/zippy chrome-mv3-staging",
+    "zip:prod": "sh ./scripts/zippy chrome-mv3-prod",
+    "package": "sh ./scripts/package",
+    "generate:gql-schemas": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.8.1",
+    "@medv/finder": "^3.1.0",
+    "@mui/icons-material": "^5.15.5",
+    "@mui/material": "^5.8.4",
+    "@plasmohq/storage": "^1.9.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "bento-common": "workspace:apps/common",
+    "formik": "^2.2.5",
+    "framer-motion": "^10.12.16",
+    "graphql": "^16.8.1",
+    "html-to-text": "^9.0.5",
+    "image-extensions": "^1.1.0",
+    "lodash": "^4.17.21",
+    "plasmo": "0.84.1",
+    "postcss": "^8.4.5",
+    "react": "18.2.0",
+    "react-colorful": "^5.5.1",
+    "react-dom": "18.2.0",
+    "react-select": "^5.7.4",
+    "tailwindcss": "^3.2.4",
+    "tinycolor2": "^1.4.2",
+    "urql": "^4.0.6"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^5.0.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/import-types-preset": "^3.0.0",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/near-operation-file-preset": "^3.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "^3.0.0",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-urql": "^4.0.0",
+    "@ianvs/prettier-plugin-sort-imports": "4.1.0",
+    "@jest/globals": "^29.7.0",
+    "@jest/types": "^29.6.3",
+    "@types/chrome": "^0.0.260",
+    "@types/html-to-text": "^9.0.4",
+    "@types/node": "20.5.9",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-webextension-mock": "^3.8.9",
+    "prettier": "3.0.3",
+    "ts-jest": "^29.1.1",
+    "typescript": "^4.5.4"
+  },
+  "packageManager": "yarn@3.1.1",
+  "manifest": {
+    "key": "$CRX_PUBLIC_KEY",
+    "name": "$DISPLAY_NAME",
+    "permissions": [
+      "storage",
+      "activeTab"
+    ],
+    "externally_connectable": {
+      "matches": [
+        "http://localhost/*",
+        "$EXTERNALLY_CONNECTABLE_URL"
+      ]
+    },
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "resources/test.json"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ]
+  }
+}

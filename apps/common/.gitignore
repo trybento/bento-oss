@@ -1,0 +1,4 @@
+*.js
+*.d.ts
+!jest.config.js
+!.eslintrc.js

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+if test -z "$GITHUB_TOKEN" 
+then 
+  echo "[graphql-inspector diff] Local"
+
+  graphql-inspector diff git:origin/develop:./src/graphql/__generated__/main.graphql ./src/graphql/__generated__/main.graphql --rule suppressRemovalOfDeprecatedField
+
+  graphql-inspector diff git:origin/develop:./src/graphql/__generated__/embed.graphql ./src/graphql/__generated__/embed.graphql --token --rule suppressRemovalOfDeprecatedField
+else 
+  echo "[graphql-inspector diff] Remote"
+
+  graphql-inspector diff github:trybento/bentwo#develop:apps/udon/src/graphql/__generated__/main.graphql ./src/graphql/__generated__/main.graphql --token $GITHUB_TOKEN --rule suppressRemovalOfDeprecatedField
+
+  graphql-inspector diff github:trybento/bentwo#develop:apps/udon/src/graphql/__generated__/embed.graphql ./src/graphql/__generated__/embed.graphql --token $GITHUB_TOKEN --rule suppressRemovalOfDeprecatedField
+fi

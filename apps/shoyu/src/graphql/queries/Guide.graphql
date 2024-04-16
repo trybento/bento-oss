@@ -1,0 +1,389 @@
+query GuideQuery($guideEntityId: EntityId!) {
+  guide(guideEntityId: $guideEntityId) {
+    ...GuideQuery_guide
+  }
+}
+
+fragment GuideQuery_baseGuide on EmbedGuide {
+  __typename
+  id
+  entityId
+  name
+  theme
+  type
+  description
+  completionState
+  completedAt
+  doneAt
+  savedAt
+  state
+  isViewed
+  isDestination
+  totalSteps
+  completedStepsCount
+  isSideQuest
+  orderIndex
+  nextGuide
+  previousGuide
+  firstIncompleteModule
+  firstIncompleteStep
+  pageTargetingType
+  pageTargetingUrl
+  designType
+  formFactor
+  canResetOnboarding
+  isCyoa
+  branchedFromGuide
+  branchedFromChoice {
+    choiceKey
+    branchingKey
+  }
+  formFactorStyle {
+    ...GuideQuery_formFactorStyle
+  }
+  taggedElements {
+    ...GuideQuery_taggedElement
+  }
+  guideBase {
+    entityId
+  }
+  stepsInfo: steps {
+    __typename
+    name
+    bodySlate
+  }
+  stepsByState {
+    __typename
+    incomplete {
+      name
+    }
+    complete {
+      name
+    }
+    skipped {
+      name
+    }
+    viewed {
+      name
+    }
+  }
+}
+
+fragment GuideQuery_guide on EmbedGuide {
+  ...GuideQuery_baseGuide
+  modules {
+    ...GuideQuery_module
+  }
+}
+
+fragment GuideQuery_module on EmbedGuideModule {
+  __typename
+  id
+  entityId
+  name
+  orderIndex
+  nextModule
+  previousModule
+  guide
+  totalStepsCount
+  completedStepsCount
+  isComplete
+  firstIncompleteStep
+  steps {
+    ...GuideQuery_step
+  }
+}
+
+fragment GuideQuery_step on EmbedStep {
+  __typename
+  id
+  entityId
+  isComplete
+  completedAt
+  completedByUser {
+    fullName
+    email
+  }
+  wasCompletedAutomatically
+  manualCompletionDisabled
+  name
+  orderIndex
+  bodySlate
+  hasViewedStep
+  state
+  stepType
+  dismissLabel
+  nextStepEntityId
+  previousStepEntityId
+  guide
+  module
+  branching {
+    ...GuideQuery_branching
+  }
+  ctas {
+    ...GuideQuery_cta
+  }
+  mediaReferences {
+    ...GuideQuery_media
+  }
+  inputs {
+    ...GuideQuery_input
+  }
+}
+fragment GuideQuery_branching on EmbedBranching {
+  __typename
+  key
+  type
+  question
+  multiSelect
+  dismissDisabled
+  formFactor
+  branches {
+    ...GuideQuery_branch
+  }
+}
+
+fragment GuideQuery_branch on EmbedBranch {
+  __typename
+  key
+  label
+  selected
+  style {
+    ...GuideQuery_branchingStyle
+  }
+}
+
+fragment GuideQuery_branchingStyle on BranchingStyle {
+  ... on BranchingCardStyle {
+    __typename
+    backgroundImageUrl
+    backgroundImagePosition
+  }
+}
+
+fragment GuideQuery_cta on EmbedStepCta {
+  entityId
+  text
+  url
+  destination {
+    key
+    designType
+    formFactor
+    pageTargeting {
+      type
+      url
+    }
+  }
+  settings {
+    bgColorField
+    textColorField
+    eventName
+    markComplete
+    opensInNewTab
+  }
+  type
+  style
+}
+
+fragment GuideQuery_media on MediaReference {
+  entityId
+  media {
+    type
+    url
+    meta {
+      ... on ImageMediaMeta {
+        naturalWidth
+        naturalHeight
+      }
+      ... on VideoMediaMeta {
+        videoId
+        videoType
+      }
+    }
+  }
+  settings {
+    ... on ImageMediaReferenceSettings {
+      alignment
+      fill
+      hyperlink
+      lightboxDisabled
+    }
+    ... on VideoMediaReferenceSettings {
+      alignment
+      playsInline
+    }
+  }
+}
+
+fragment GuideQuery_formFactorStyle on FormFactorStyle {
+  ... on BannerStyle {
+    bannerType
+    bannerPosition
+    backgroundColor
+    textColor
+    canDismiss
+    ctasOrientation
+  }
+  ... on ModalStyle {
+    modalSize
+    position
+    hasBackgroundOverlay
+    canDismiss
+    backgroundColor
+    textColor
+    stepBodyOrientation
+    mediaOrientation
+    verticalMediaOrientation
+    verticalMediaAlignment
+    horizontalMediaAlignment
+    ctasOrientation
+    imageWidth
+    mediaFontSize
+    mediaTextColor
+  }
+  ... on TooltipStyle {
+    backgroundColor
+    backgroundOverlayColor
+    backgroundOverlayOpacity
+    hasArrow
+    hasBackgroundOverlay
+    textColor
+    tooltipShowOn
+    tooltipSize
+    canDismiss
+    stepBodyOrientation
+    mediaOrientation
+    verticalMediaOrientation
+    verticalMediaAlignment
+    horizontalMediaAlignment
+    ctasOrientation
+    imageWidth
+    mediaFontSize
+    mediaTextColor
+  }
+  ... on CardStyle {
+    backgroundColor
+    textColor
+    stepBodyOrientation
+    mediaOrientation
+    verticalMediaOrientation
+    verticalMediaAlignment
+    horizontalMediaAlignment
+    height
+    imageWidth
+    canDismiss
+    borderColor
+    borderRadius
+    padding
+    advancedPadding
+    ctasOrientation
+    mediaFontSize
+    mediaTextColor
+  }
+  ... on CarouselStyle {
+    backgroundColor
+    textColor
+    canDismiss
+    height
+    imageWidth
+    dotsColor
+    stepBodyOrientation
+    mediaOrientation
+    borderColor
+    borderRadius
+    padding
+    advancedPadding
+    ctasOrientation
+  }
+  ... on VideoGalleryStyle {
+    backgroundColor
+    textColor
+    canDismiss
+    borderColor
+    borderRadius
+    padding
+    advancedPadding
+    selectedBackgroundColor
+    statusLabelColor
+  }
+  ... on ChecklistStyle {
+    stepBodyOrientation
+    mediaOrientation
+    hideStepGroupTitle
+    hideCompletedSteps
+    height
+    imageWidth
+    ctasOrientation
+  }
+}
+
+fragment GuideQuery_input on EmbedInputStep {
+  entityId
+  label
+  type
+  answer
+  settings {
+    ... on TextOrEmailSettings {
+      placeholder
+      required
+      helperText
+      maxValue
+    }
+    ... on NpsSettings {
+      required
+      helperText
+    }
+    ... on NumberPollSettings {
+      required
+      helperText
+      minLabel
+      minValue
+      maxLabel
+      maxValue
+    }
+    ... on DropdownSettings {
+      required
+      multiSelect
+      variation
+      options {
+        label
+        value
+      }
+    }
+  }
+}
+
+fragment GuideQuery_taggedElement on EmbedTaggedElement {
+  entityId
+  wildcardUrl
+  elementSelector
+  type
+  alignment
+  xOffset
+  yOffset
+  relativeToText
+  tooltipAlignment
+  style {
+    ...GuideQuery_taggedElementStyle
+  }
+  tooltipTitle
+  isSideQuest
+  designType
+  formFactor
+  step
+  guide
+  dismissedAt
+}
+
+fragment GuideQuery_taggedElementStyle on VisualTagStyleSettings {
+  ... on VisualTagHighlightSettings {
+    type
+    pulse
+    color
+    thickness
+    padding
+    radius
+    opacity
+    text
+  }
+}

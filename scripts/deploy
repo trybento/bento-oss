@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+# Deploys the current branch/commit to the given environment, in the following order:
+#
+# 1. The JS embeddable (Shoyu)
+# 2. The back-end API and workers, including database migrations (Udon)
+# 3. The admin dashboard (Miso)
+#
+# The following dependencies are required for the script:
+#
+# - `jq` commandline tool
+# - AWS CLI
+#
+# The following environment variables are required for the script:
+#
+# - ENVIRONMENT_NAME: the ECS cluster to run the task in
+# - AWS_ACCOUNT_ID: the AWS account ID where the environment is located
+# - AWS_ACCESS_KEY_ID: the AWS IAM access key ID
+# - AWS_SECRET_ACCESS_KEY: the AWS IAM access key secret
+# - AWS_DEFAULT_REGION: the region where the environment is located (e.g., us-west-1)
+# - AWS_S3_BUCKET: the S3 bucket hosting the Shoyu embed
+# - ECR_REPOSITORY: the URL of the ECR registry containing the Docker builds
+# - SECURITY_GROUP_ID: ID of the security group in which to run DB migrations
+# - SUBNET_ID: ID of any subnet in which to run DB migrations
+
+set -e
+
+commit_sha=$(git rev-parse HEAD)
+
+echo "Deploying SHA $commit_sha..."
+
+# Move up to root directory
+cd ../
+
+###############
+#### Shoyu ####
+###############
+
+# 1. Build the JS bundle
+
+echo "Building Shoyu..."
+
+filename=bento-embed-$ENVIRONMENT_NAME.js
+app_filename=bento-embed-$ENVIRONMENT_NAME-$commit_sha.js
+
+cd apps/shoyu
+rm -rf build
+npx vite build -c vite.entry-point.config.js --mode $ENVIRONMENT_NAME
+VITE_COMMIT_SHA=$(git rev-parse --short HEAD) npx vite build --mode $ENVIRONMENT_NAME
+sed "s/index.js.map/$filename.map/g" build/index.js > build/$filename
+cp build/index.js build/$filename
+sed "s/index-app.js.map/$app_filename.map/g" build/index-app.js > build/$app_filename
+cp build/index-app.js.map build/$app_filename.map
+cd ../../
+
+# 2. Deploy to S3
+
+echo "Deploying Shoyu to S3..."
+
+aws s3 sync ./apps/shoyu/build s3://$AWS_S3_BUCKET --exclude "*" --include "$filename*" --include "$app_filename*"
+
+echo "Shoyu deployment complete"
+
+###################
+#### Udon/Miso ####
+###################
+
+# 1. Build and push the Docker image via CodeBuild
+
+echo "Building Udon/Miso Docker image..."
+
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+
+docker build -t $ECR_REPOSITORY:$ENVIRONMENT_NAME --build-arg BUILD_COMMIT_SHA=$commit_sha .
+docker tag $ECR_REPOSITORY:$ENVIRONMENT_NAME $ECR_REPOSITORY:$commit_sha
+
+echo "Pushing Docker image to ECR..."
+
+docker push $ECR_REPOSITORY:$ENVIRONMENT_NAME
+docker push $ECR_REPOSITORY:$commit_sha
+
+# 2. Run DB migrations
+
+echo "Running DB migrations..."
+
+./scripts/deployToECS \
+  -c bento-$ENVIRONMENT_NAME \
+  -d $ENVIRONMENT_NAME-udon-db-migrations \
+  -i $ECR_REPOSITORY:$commit_sha \
+  --network-configuration 'awsvpcConfiguration={securityGroups=["'$SECURITY_GROUP_ID'"],subnets=['"$SUBNET_ID"']}' \
+  --launch-type FARGATE \
+  --wait-for-success \
+  -t 300 \
+  --run-task
+
+# 3. Deploy the new build to ECS
+
+services=("$ENVIRONMENT_NAME-udon-worker" "$ENVIRONMENT_NAME-udon-priority-worker" "$ENVIRONMENT_NAME-udon-web" "$ENVIRONMENT_NAME-miso")
+
+echo "Deploying new services"
+
+for i in "${services[@]}"
+do
+  echo "Deploying $i"
+
+  ./scripts/deployToECS \
+    -c bento-$ENVIRONMENT_NAME \
+    -n $i \
+    -i $ECR_REPOSITORY:$commit_sha \
+    --enable-rollback \
+    -t 300
+done
+
+echo "Deployment complete!"

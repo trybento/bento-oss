@@ -1,0 +1,17 @@
+accounts:
+  - name: 'Blue Weave (demo)'
+    externalId: 'blueweave'
+    accountUsers:
+      - fullName: 'Angela Admin'
+        email: 'angela@blueweave.com'
+        externalId: 'aa-bw'
+      - fullName: 'Rae Niya'
+        email: 'rae@blueweave.com'
+        externalId: 'rn-bw'
+      - fullName: 'Andi Chen'
+        email: 'andi@blueweave.com'
+        externalId: 'ac-bw'
+      - fullName: 'Ricky Zein'
+        email: 'ricky@blueweave.com'
+        externalId: 'rz-bw'
+    guide:

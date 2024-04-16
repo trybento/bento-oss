@@ -1,0 +1,8 @@
+mutation ResetOnboardingMutation($input: ResetOnboardingInput!) {
+  resetOnboarding(input: $input) {
+    accountUser {
+      id
+      __typename
+    }
+  }
+}

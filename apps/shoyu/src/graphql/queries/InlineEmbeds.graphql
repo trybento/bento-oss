@@ -1,0 +1,22 @@
+query InlineEmbedsQuery {
+  inlineEmbeds {
+    ...InlineEmbedsQuery_inlineEmbed
+  }
+}
+
+fragment InlineEmbedsQuery_inlineEmbed on EmbedOrganizationInlineEmbed {
+  entityId
+  url
+  wildcardUrl
+  elementSelector
+  position
+  topMargin
+  rightMargin
+  bottomMargin
+  padding
+  borderRadius
+  leftMargin
+  alignment
+  maxWidth
+  guide
+}

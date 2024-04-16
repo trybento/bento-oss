@@ -1,0 +1,10 @@
+mutation UpdateVisualBuilderSessionMutation(
+  $input: UpdateVisualBuilderSessionInput!
+) {
+  updateVisualBuilderSession(input: $input) {
+    errors
+    visualBuilderSession {
+      entityId
+    }
+  }
+}

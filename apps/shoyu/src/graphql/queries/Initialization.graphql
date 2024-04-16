@@ -1,0 +1,139 @@
+query InitializationQuery($withSessionData: Boolean!) {
+  account @include(if: $withSessionData) {
+    externalId
+    name
+  }
+  accountUser @include(if: $withSessionData) {
+    entityId
+    externalId
+    fullName
+    email
+  }
+  organization @include(if: $withSessionData) {
+    entityId
+    domain
+    name
+  }
+  uiSettings {
+    theme
+    primaryColorHex
+    secondaryColorHex
+    isSecondaryColorDark
+    fontColorHex
+    borderColor
+    toggleTextColor
+    isFontColorDark
+    embedToggleBehavior
+    backgroundColor
+    sidebarVisibility
+    sidebarAvailability
+    sidebarBackgroundColor
+    cardBackgroundColor
+    isBackgroundDark
+    isSidebarBackgroundDark
+    toggleStyle
+    toggleColorHex
+    toggleText
+    sidebarSide
+    sidebarStyle
+    additionalColors {
+      value
+    }
+    appContainerIdentifier
+    embedCustomCss
+    isEmbedToggleColorInverted
+    isSidebarAutoOpenOnFirstViewDisabled
+    tagPrimaryColor
+    tagLightPrimaryColor
+    tagTextColor
+    tagDotSize
+    tagPulseLevel
+    tagBadgeIconPadding
+    tagBadgeIconBorderRadius
+    tagCustomIconUrl
+    tagVisibility
+    paragraphFontSize
+    paragraphLineHeight
+    cyoaOptionBackgroundColor
+    cyoaOptionBorderColor
+    cyoaOptionShadow
+    cyoaOptionShadowHover
+    isCyoaOptionBackgroundColorDark
+    cyoaTextColor
+    floatingAnchorXOffset
+    floatingAnchorYOffset
+    stepCompletionStyle
+    stepSeparationStyle {
+      type
+      boxCompleteBackgroundColor
+      boxActiveStepShadow
+      boxBorderRadius
+    }
+    injectSidebar
+    inlineEmptyBehaviour
+    inlineContextualStyle {
+      borderColor
+      borderRadius
+      shadow
+      padding
+    }
+    modalsStyle {
+      paddingX
+      paddingY
+      shadow
+      borderRadius
+      backgroundOverlayColor
+      backgroundOverlayOpacity
+    }
+    tooltipsStyle {
+      paddingX
+      paddingY
+      shadow
+      borderRadius
+    }
+    ctasStyle {
+      paddingX
+      paddingY
+      fontSize
+      lineHeight
+      borderRadius
+    }
+    bannersStyle {
+      padding
+      shadow
+      borderRadius
+    }
+    responsiveVisibility {
+      all
+    }
+    sidebarHeader {
+      type
+      closeIcon
+      progressBar
+      showModuleNameInStepView
+    }
+    sidebarBlocklistedUrls
+    allGuidesStyle {
+      allGuidesTitle
+      activeGuidesTitle
+      previousGuidesTitle
+      previousAnnouncementsTitle
+    }
+    ticketCreationEnabled
+    zendeskChatEnabled
+    kbSearchEnabled
+    quickLinks {
+      url
+      title
+      icon
+    }
+    helpCenter {
+      source
+      url
+    }
+    helpCenterStyle {
+      supportTicketTitle
+      chatTitle
+    }
+  }
+}

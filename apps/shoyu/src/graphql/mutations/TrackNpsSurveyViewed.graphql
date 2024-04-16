@@ -1,0 +1,9 @@
+mutation TrackNpsSurveyViewed($input: TrackNpsSurveyViewedInput!) {
+  trackNpsSurveyViewed(input: $input) {
+    errors
+    npsSurvey {
+      entityId
+      firstSeenAt
+    }
+  }
+}

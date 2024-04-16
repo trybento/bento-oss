@@ -1,0 +1,7 @@
+mutation SaveGuideForLaterMutation($input: SaveGuideForLaterInput!) {
+  saveGuideForLater(input: $input) {
+    guide {
+      ...GuideQuery_baseGuide
+    }
+  }
+}

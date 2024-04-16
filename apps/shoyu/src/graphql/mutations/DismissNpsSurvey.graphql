@@ -1,0 +1,9 @@
+mutation DismissNpsSurveyMutation($input: DismissNpsSurveyInput!) {
+  dismissNpsSurvey(input: $input) {
+    errors
+    npsSurvey {
+      entityId
+      dismissedAt
+    }
+  }
+}

@@ -1,0 +1,7 @@
+subscription StepAutoCompleteInteractionsChanged {
+  stepAutoCompleteInteractionsChanged {
+    stepAutoCompleteInteractions {
+      ...StepAutoCompleteInteractionsQuery_stepAutoCompleteInteraction
+    }
+  }
+}

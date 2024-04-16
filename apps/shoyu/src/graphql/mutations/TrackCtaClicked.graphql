@@ -1,0 +1,5 @@
+mutation TrackCtaClickedMutation($input: TrackCtaClickedInput!) {
+  trackCtaClicked(input: $input) {
+    errors
+  }
+}

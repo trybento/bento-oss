@@ -1,0 +1,11 @@
+.halo::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--halo-radius);
+  box-shadow: 0px 2px var(--halo-thickness) var(--halo-color),
+    0px 0px calc(var(--halo-thickness) * 2) var(--halo-color),
+    0px 0px var(--halo-thickness) var(--halo-color),
+    1px 2px var(--halo-thickness) var(--halo-color);
+}

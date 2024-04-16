@@ -1,0 +1,105 @@
+[
+  {
+    "id": "def36d2b-f514-4dd3-83e8-6b2fa4ef4a06",
+    "type": "paragraph",
+    "children": [
+      {
+        "h2": true,
+        "id": "5248fb22-738f-4161-b8e7-85aa397e2822",
+        "text": "What does success look like?",
+        "type": "text",
+        "originNodeId": "c9d48fbb-1399-4617-a70a-1a00529210e6",
+        "copiedFromNodeId": "0097ecc5-499b-4f93-9f45-e6f14b480fad"
+      }
+    ],
+    "originNodeId": "4c361145-2e3a-4553-9433-0bbeb3b1113f",
+    "copiedFromNodeId": "93baafa2-b3ae-4fc6-95ed-cb4cb3fe2e7e"
+  },
+  {
+    "id": "170d15a8-9176-4c67-8927-bb5ae52760ee",
+    "type": "paragraph",
+    "children": [
+      {
+        "id": "285ec1bc-1d2a-4a42-88a2-421a5c83256f",
+        "text": "Bento enables you to build modular onboarding (and everboarding) flows for new customers. But hopefully you knew that already – otherwise, how did you find this?",
+        "type": "text",
+        "originNodeId": "0a58d60a-289e-41ee-851c-ac928421cd51",
+        "copiedFromNodeId": "1dfb871a-756d-492e-bbfc-c8f0863ecb5d"
+      }
+    ],
+    "originNodeId": "d731aa6d-2566-4d2e-82e5-b512d1612bef",
+    "copiedFromNodeId": "24389070-8969-4019-9bf5-e636ee3f20ac"
+  },
+  {
+    "id": "f47c957a-720e-4b8e-bd12-65015fd4987f",
+    "type": "paragraph",
+    "children": [
+      {
+        "id": "a1f574a0-f127-4cfc-b634-9fe430431f74",
+        "text": "But more importantly, we want ",
+        "type": "text",
+        "originNodeId": "59db0d6b-807c-4219-a1b9-03548c17a5ad",
+        "copiedFromNodeId": "f760b8f5-a550-4ffd-80b0-d2f47408f297"
+      },
+      {
+        "id": "3483bf95-49c0-4e1e-b7ad-7fda48e6b64f",
+        "bold": true,
+        "text": "you",
+        "type": "text",
+        "originNodeId": "59db0d6b-807c-4219-a1b9-03548c17a5ad",
+        "copiedFromNodeId": "af86eeed-63c6-4f09-8246-42c6def57b95"
+      },
+      {
+        "id": "51f49fc1-07d4-414f-a535-36c0c37f3b4a",
+        "text": " to feel that success for yourself. ",
+        "type": "text",
+        "originNodeId": "59db0d6b-807c-4219-a1b9-03548c17a5ad",
+        "copiedFromNodeId": "ab0ef766-9e26-499c-943a-bb7ce929f947"
+      }
+    ],
+    "originNodeId": "03d00f5b-9db7-4ca9-8012-d2f012af5ec0",
+    "copiedFromNodeId": "07535d35-faa3-4f19-9820-bddeda8dadd8"
+  },
+  {
+    "id": "76b1ff92-2acc-423c-8865-95f2ed72efbe",
+    "type": "callout",
+    "children": [
+      {
+        "id": "534b3b66-a5d9-489f-a8d5-3864d877c969",
+        "type": "paragraph",
+        "children": [
+          {
+            "text": "We believe your first moment of success is when ",
+            "type": "text"
+          },
+          {
+            "id": "c2cfbaf6-fe27-422c-bb1c-08e4c083beb9",
+            "bold": true,
+            "text": "you've built the simple steps of an onboarding checklist and can see it live in your app.",
+            "type": "text"
+          }
+        ],
+        "originNodeId": "dd67492d-280f-4afd-9266-cb15c08b81e7",
+        "copiedFromNodeId": "25c411aa-4601-499c-a975-b30adb0e32de"
+      }
+    ],
+    "calloutType": "tip",
+    "originNodeId": "59997d6b-335c-415a-9cce-363600d1f8ff",
+    "copiedFromNodeId": "905c2baa-75da-4f22-92dd-ff710f5d8554"
+  },
+  {
+    "id": "672c5530-ac98-4128-8434-28487409e236",
+    "type": "paragraph",
+    "children": [
+      {
+        "id": "2a93d6e1-d1b7-44fb-b226-016a6389bed6",
+        "text": "Do you agree? If so, let's continue. And if not, give us a shout and let's chat through your goals!",
+        "type": "text",
+        "originNodeId": "d41f7e15-7ad6-4579-94a0-2ca0e1d91e84",
+        "copiedFromNodeId": "096433fd-d3a1-4597-8e26-779b18d8eefa"
+      }
+    ],
+    "originNodeId": "7cb76053-bb38-42b6-bdaf-a8d070266155",
+    "copiedFromNodeId": "db796fd9-f3d4-459f-9f49-0d9c6877f653"
+  }
+]

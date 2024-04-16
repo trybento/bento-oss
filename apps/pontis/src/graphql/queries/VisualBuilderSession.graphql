@@ -1,0 +1,49 @@
+query VisualBuilderSessionQuery($visualBuilderSessionEntityId: EntityId!) {
+  visualBuilderSession: findVisualBuilderSession(
+    entityId: $visualBuilderSessionEntityId
+  ) {
+    entityId
+    type
+    initialData
+    progressData
+    previewData
+    state
+  }
+  organizationDomain
+  uiSettings {
+    embedBackgroundHex
+    primaryColorHex
+    secondaryColorHex
+    additionalColors {
+      value
+    }
+    fontColorHex
+    theme
+    cyoaOptionBackgroundColor
+    isCyoaOptionBackgroundColorDark
+    cyoaTextColor
+    borderColor
+    tagDotSize
+    tagBadgeIconBorderRadius
+    tagBadgeIconPadding
+    tagPrimaryColor
+    tagCustomIconUrl
+    tagTextColor
+    tagPulseLevel
+    tagVisibility
+    modalsStyle {
+      paddingX
+      paddingY
+      shadow
+      borderRadius
+      backgroundOverlayColor
+      backgroundOverlayOpacity
+    }
+  }
+  enabledFeatureFlags
+  attributes {
+    type
+    name
+    valueType
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "composite": true,
+    "jsx": "react"
+  }
+}

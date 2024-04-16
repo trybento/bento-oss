@@ -1,0 +1,5 @@
+subscription GuideChanged($guideEntityId: EntityId!) {
+  guideChanged(guideEntityId: $guideEntityId) {
+    ...GuideQuery_guide
+  }
+}

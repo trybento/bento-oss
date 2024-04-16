@@ -1,0 +1,15 @@
+query StepAutoCompleteInteractionsQuery {
+  stepAutoCompleteInteractions {
+    ...StepAutoCompleteInteractionsQuery_stepAutoCompleteInteraction
+  }
+}
+
+fragment StepAutoCompleteInteractionsQuery_stepAutoCompleteInteraction on EmbedStepAutoCompleteInteraction {
+  entityId
+  url
+  wildcardUrl
+  elementSelector
+  type
+  step
+  guide
+}

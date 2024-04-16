@@ -1,0 +1,5 @@
+mutation SelectBranchingPathMutation($input: selectBranchingPathInput!) {
+  selectBranchingPath(input: $input) {
+    errors
+  }
+}

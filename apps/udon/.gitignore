@@ -1,0 +1,7 @@
+node_modules/
+build/
+*.log
+sendgrid.env
+**/*.env
+!env/test.env
+flamegraphs/

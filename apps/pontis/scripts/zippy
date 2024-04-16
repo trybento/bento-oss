@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+ZIP_NAME=build-$1-$(date +%Y-%m-%d-%H-%M-%S).zip
+
+cd build/$1
+zip -r $SCRIPT_DIR/../$ZIP_NAME ./*
+
+echo "Zipped: $ZIP_NAME"

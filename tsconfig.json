@@ -1,0 +1,12 @@
+{
+  "references": [
+    { "path": "./apps/common" },
+    { "path": "./apps/miso" },
+    { "path": "./apps/shoyu" },
+    { "path": "./apps/udon" }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}

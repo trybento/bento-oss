@@ -1,0 +1,30 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "allowJs": true,
+    "jsx": "react",
+    "outDir": "build",
+    "strict": true,
+    "noImplicitAny": false,
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "shared/*": ["./shared/*"],
+      "server": ["./Server"],
+      "src/*": ["./*"]
+    },
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "composite": true
+  },
+  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.json"],
+  "exclude": ["../../node_modules/*"],
+  "references": [{ "path": "../common" }]
+}

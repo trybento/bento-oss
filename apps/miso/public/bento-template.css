@@ -1,0 +1,300 @@
+/*
+* Global styling.
+*/
+* {
+  font-family: inherit;
+}
+
+/*
+* Embedded cards wrapper.
+*/
+.bento-step-component-card {
+  /* border: 2px solid blue !important; */
+}
+.bento-step-component-carousel {
+}
+
+/*
+* Other wrappers.
+*/
+.bento-step-component-flat {
+}
+.bento-step-component-nested {
+}
+.bento-step-component-compact {
+}
+.bento-step-component-timeline {
+}
+
+/*
+* Inline wrapper.
+*/
+.bento-inline-wrapper {
+}
+
+/*
+* Inline flat wrapper.
+*/
+.bento-inline-flat-wrapper {
+}
+
+/**
+* Inline - sm.
+* When its container is 700px and below.
+*/
+.bento-inline-sm-header {
+}
+.bento-inline-sm-header-content {
+}
+.bento-inline-sm-header-subtitle {
+}
+.bento-inline-sm-header-title {
+}
+
+/*
+* Sidebar header.
+*/
+.bento-sidebar-header {
+}
+.bento-sidebar-header-content {
+}
+.bento-sidebar-header-title {
+}
+.bento-sidebar-header-subtitle {
+}
+
+/*
+* Sidebar flat wrapper.
+*/
+.bento-sidebar-flat-wrapper {
+}
+
+/*
+* Sidebar wrapper.
+*/
+.bento-sidebar-wrapper {
+}
+
+/*
+* Sidebar toggle.
+*/
+.bento-sidebar-toggle {
+}
+.bento-sidebar-toggle .circular-progress-wrapper {
+}
+.bento-sidebar-toggle .sidebar-toggle-arrow-right {
+}
+.bento-sidebar-toggle .sidebar-toggle-arrow-left {
+}
+.bento-sidebar-toggle .circular-progress {
+}
+.bento-sidebar-toggle .circular-progress .CircularProgressbar-trail {
+}
+.bento-sidebar-toggle .circular-progress .CircularProgressbar-path {
+}
+.bento-sidebar-toggle .circular-progress + div {
+}
+.bento-sidebar-toggle .circular-progress-text {
+}
+
+/*
+* Floating app wrapper.
+*/
+.bento-floating-app-wrapper {
+}
+.bento-floating-app {
+}
+
+/*
+* Guide.
+*/
+.bento-guide-title {
+}
+.bento-guide-description {
+}
+
+/*
+* Guide cards.
+*/
+.bento-available-guide.completed {
+}
+.bento-available-guide.hovered {
+}
+
+/*
+* Step groups.
+*/
+.bento-step-group-title {
+}
+.bento-step-group-list {
+}
+.bento-step-group-circular-index {
+}
+
+/*
+* Steps.
+*/
+.bento-step-checkbox {
+}
+.bento-step-checkbox.completed {
+}
+.bento-step-circular-index {
+}
+.bento-step-circular-index.completed {
+}
+.bento-onboarding-checklist-checkbox {
+}
+.bento-onboarding-checklist-checkbox.completed {
+}
+
+/*
+* Step content.
+*/
+.bento-step-title {
+}
+.bento-step-content-wrapper {
+}
+.bento-step-content {
+}
+.bento-nested-step-content {
+}
+.bento-flat-step-content {
+}
+.bento-compact-step-content {
+}
+.bento-step-content-button-wrapper {
+}
+.bento-step-content-button {
+}
+.bento-step-ctas-wrapper {
+}
+.bento-step-cta-button {
+}
+.bento-step-skip-button {
+}
+.bento-paragraph {
+}
+.bento-callout {
+}
+.bento-content-item {
+}
+.bento-content-item-edge-to-edge {
+}
+.bento-code-block {
+}
+.bold-text {
+}
+.italic-text {
+}
+.h1-text {
+}
+.h2-text {
+}
+.strikethrough-text {
+}
+.underline-text {
+}
+.code-text {
+}
+
+/*
+* Progress bar.
+*/
+.bento-progress-bar {
+}
+
+/*
+* Guide success banner
+*/
+.bento-guide-success {
+}
+.bento-guide-success .completed-guide {
+}
+.bento-guide-success .next-guide {
+}
+
+/*
+* Modal.
+*/
+.bento-modal {
+}
+.bento-modal-content {
+}
+
+/*
+* Tooltip.
+*/
+.bento-tooltip {
+}
+
+/*
+* Inputs.
+*/
+.bento-input-field-wrapper {
+}
+.bento-input-field-label {
+}
+.bento-input-field {
+}
+.bento-input-field-option {
+}
+.bento-input-field-min {
+}
+.bento-input-field-max {
+}
+
+/*
+* Resource center view
+*/
+.bento-resource-center-header-wrapper {
+}
+.bento-resource-center-title-text {
+}
+.bento-resource-center-section-title-text {
+}
+.bento-resource-center-section-wrapper {
+}
+.bento-resource-center-card-header {
+}
+.bento-resource-center-card-body {
+}
+.bento-resource-center-card-wrapper {
+}
+.bento-resource-center-card-title {
+}
+.bento-resource-center-card-date-data {
+}
+.bento-resource-center-card-description {
+}
+.bento-resource-center-card-progress-bar {
+}
+.bento-resource-center-active-card-next-step-label {
+}
+.bento-resource-center-active-card-next-step-content {
+}
+.bento-resource-center-completed-card-first-step-label {
+}
+.bento-resource-center-completed-card-last-step-label {
+}
+.bento-resource-center-completed-card-first-step-content {
+}
+.bento-resource-center-completed-card-last-step-content {
+}
+.bento-resource-center-completed-card-step-count {
+}
+.bento-link-inline-wrapper {
+}
+.bento-link-inline-wrapper .bento-link-title {
+}
+.bento-link-sidebar-wrapper {
+}
+.bento-link-sidebar-wrapper .bento-link-title {
+}
+
+/*
+* Miscellaneous.
+*/
+.bento-detailed-progress {
+}
+.bento-show-more-btn {
+}

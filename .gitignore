@@ -1,0 +1,25 @@
+**/.cache
+**/.DS_Store
+node_modules/
+apps/udon/schemas/__generated__/**
+.env*.local
+tsconfig.tsbuildinfo
+build
+.vscode
+
+# Yarn
+.yarnrc.yml
+.yarn/*
+.yarn/install-state.gz
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+apps/onigiri/src/pages/Content/embed.js
+apps/onigiri/build.zip
+
+# e2e
+/.playwright/
+
+# VSCode local history
+.history
